@@ -8,6 +8,9 @@ class User < ApplicationRecord
   # ActiveStorageを使用するための記述
   has_one_attached :image
 
+  belongs_to :body_type
+
+  
 
   #ActiveStorage使用のための記述だが、導入までコメントアウトしておく。
   # validate :image_type

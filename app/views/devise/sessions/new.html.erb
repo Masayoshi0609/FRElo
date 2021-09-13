@@ -1,23 +1,24 @@
-<h2>Log in</h2>
+<h2>ログイン</h2>
+<h4>おかえりなさい！</h4>
 
 <!--form_for表記なので、form_withに変更しておく。エラーが出た場合は確認する。-->
 <%#= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
 <%= form_with model: @user, url: user_session_path, local: true do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
+    メールアドレス<br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+   パスワード<br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      パスワードを保存
     </div>
   <% end %>
 

@@ -1,2 +1,7 @@
-<h1>Homes#welcome</h1>
-<p>Find me in app/views/homes/welcome.html.erb</p>
+<h1>さぁ、一緒にFReloでバディを探そう！</h1>
+<p>登録内容を元に、あなたのタイプ属性が決まりました！</p>
+
+<%= current_user.body_type.name  %>
+<p>あなたのBMIは<%= @BMI %>です</p>
+
+運動頻度は<%= @result2  %>です。

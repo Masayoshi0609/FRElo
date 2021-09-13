@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_09_13_075551) do
     t.string "name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "description"
+    t.text "e"
   end
 
   create_table "bookmarks", force: :cascade do |t|
