@@ -1,0 +1,2 @@
+module BuddyTimelinesHelper
+end

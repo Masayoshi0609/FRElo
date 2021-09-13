@@ -1,0 +1,2 @@
+module HotTimelinesHelper
+end
