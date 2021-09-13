@@ -3,7 +3,16 @@ Rails.application.routes.draw do
   root to: "homes#index"
   get "/body_type" => "homes#type"
   get "/welcome" => "homes#welcome"
-  devise_for :users
+
+  devise_for :users, :controllers => {
+   :registrations => 'users/registrations',
+   :sessions => 'users/sessions',
+   :passwords => 'users/passwords'
+  }
+
+  devise_scope :user do
+    get 'mypage' => 'home_timelines#show'
+  end
 
   resources :posts, only: [:create, :show, :destroy] do
     resources :comments, only: [:create, :destroy]
