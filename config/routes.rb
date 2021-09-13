@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "homes#index"
   get "/body_type" => "homes#type"
   get "/welcome" => "homes#welcome"
+  get "judge" => "homes#judge"
 
   devise_for :users, :controllers => {
    :registrations => 'users/registrations',

@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     #登録後のウェルカムページに遷移する
     def after_sign_up_path_for(resource)
-       welcome_path
+       judge_path
     end
 
 

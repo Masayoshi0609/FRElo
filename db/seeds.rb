@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+
+
 BodyType.create!(
   name: "レッドビルダー",
   description: "極限まで筋肉を磨き上げたあなた！ボディを維持するには、日々のトレーニングと健康管理は欠かせません！バディと一緒なら、楽しく鍛えられますよ！"
@@ -40,3 +43,14 @@ BodyType.create!(
   name: "オレンジプラス",
   description: "ぽっちゃりな体型のあなた！より健康を手に入れるなら、他の体型を目指すのもアリかもしれませんね！バディと一緒に、新しい自分を探してみましょう！"
 )
+
+User.create!(
+  name: "test1",
+  email: "test@email",
+  password: "test1pass",
+  weight: "70",
+  height: "175",
+  exercise_frequency: "週５回以上",
+  fat_percentage: "20",
+  body_type_id: "5"
+  )
