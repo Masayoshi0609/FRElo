@@ -52,5 +52,16 @@ User.create!(
   height: "175",
   exercise_frequency: "週５回以上",
   fat_percentage: "20",
-  body_type_id: "5"
+  body_type_id: "6"
+  )
+
+User.create!(
+  name: "test2",
+  email: "test2@email",
+  password: "test1pass",
+  weight: "70",
+  height: "175",
+  exercise_frequency: "週３～４回",
+  fat_percentage: "12",
+  body_type_id: "6"
   )
