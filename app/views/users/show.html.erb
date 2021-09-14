@@ -1,2 +1,50 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h2>ユーザープロフィール</h2>
+
+<div>
+<% if @user.image.attached? %>
+  <%= image_tag @user.image.variant(resize: '200x200' )  %>
+<% end %>
+</div>
+
+<div>
+<%= @user.name %>
+</div>
+<div>
+  <%= @user.body_type.name %>
+</div>
+<div>
+<%= @user.introduction %>
+</div>
+
+<br />
+
+<div>
+属性タイプ：  <%= @user.body_type.name %>
+</div>
+
+<div>
+年齢：        <%= @user.age %>
+</div>
+
+<div>
+身長：        <%= @user.height %>
+</div>
+
+<div>
+体重：        <%= @user.weight %>
+</div>
+
+<div>
+体脂肪率：    <%= @user.fat_percentage %>
+</div>
+
+<div>
+運動頻度：    <%= @user.exercise_frequency %>
+</div>
+
+<div>
+居住エリア：  <%= @user.living_area %>
+</div>
+
+
+<%= link_to "プロフィール編集", edit_user_path(@user.id) %>

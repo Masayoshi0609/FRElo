@@ -1,2 +1,93 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<p>ユーザー編集画面</p>
+
+<div>
+<% if @user.image.attached? %>
+  <%= image_tag @user.image.variant(resize: '200x200' )  %>
+<% end %>
+</div>
+
+<div>
+<%= @user.name %>
+</div>
+<div>
+  <%= @user.body_type.name %>
+</div>
+<div>
+<%= @user.introduction %>
+</div>
+
+<%= form_with model: @user, local:true do |f| %>
+
+  <!--この記述はdevise由来なので、正しいものに書き換えるようにする。-->
+  <%#= render "devise/shared/error_messages", resource: resource %>
+
+
+  <div class="field">
+    ニックネーム<br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    メールアドレス<br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    パスワード
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> 文字以上で入力してください)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    パスワード（再確認）<br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    電話番号<br />
+    <%= f.number_field :telephone_number, autofocus: true %>
+  </div>
+
+  <br />
+
+  <h4>次の項目は、オープンにしても良い内容を入力してください。</h4>
+
+  <div class="field">
+    居住エリア<br />
+    <%= f.text_field :living_area, autofocus: true %>
+  </div>
+
+  <div class="field">
+    身長(cm)<br />
+    <%= f.number_field :height, autofocus: true %>
+  </div>
+
+  <div class="field">
+    体重(kg)<br />
+    <%= f.number_field :weight, autofocus: true %>
+  </div>
+
+  <div class="field">
+    年齢<br />
+    <%= f.number_field :age, autofocus: true %>
+  </div>
+
+  <!--options_for_selectは配列を求めるので、exercise_frequenciesが複数形にする必要がある-->
+  <div class="field">
+    運動頻度<br />
+    <%= f.select :exercise_frequency, options_for_select(User.exercise_frequencies.keys) %>
+  </div>
+
+  <div class="field">
+    体脂肪率(%)小数点は切捨て入力してください。<br />
+    <%= f.number_field :fat_percentage, autofocus: true %>
+  </div>
+
+
+  <%= f.file_field :image %>
+
+  <%= f.submit '変更を保存する', class: "btn btn-success" %>
+
+<% end %>

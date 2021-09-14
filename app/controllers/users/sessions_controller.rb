@@ -6,7 +6,8 @@ class Users::SessionsController < Devise::SessionsController
 
   #マイページとなる属性タイムラインに遷移する
   def after_sign_in_path_for(resource)
-    mypage_path
+    # mypage_path
+    judge_path
   end
 
   # before_action :configure_sign_in_params, only: [:create]

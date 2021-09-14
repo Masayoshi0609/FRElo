@@ -1,5 +1,17 @@
 <h1>さぁ、一緒にFReloでバディを探そう！</h1>
 <p>登録内容を元に、あなたのタイプ属性が決まりました！</p>
 
-<p>あなたの属性は<%= @body_type %>です</p>
+<h2>あなたの属性は<%= @body_type.name %>です</h2>
+<p><%= @body_type.description %></p>
+<br />
+
+<p>あなたのイメージと異なりますか？</p>
+<%= link_to "属性一覧を確認して、自分で選んでみる", body_type_path %>
+
+
+
+<br />
+
+<p>プロフィール画像を設定しよう！</p>
+<%= link_to "プロフィール設定画面へ移動", edit_user_path(@user.id) %>
 

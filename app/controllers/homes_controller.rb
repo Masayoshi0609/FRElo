@@ -7,9 +7,11 @@ class HomesController < ApplicationController
 
   def welcome
 
-    @body_type = current_user.body_type.name
+    @user = current_user
+    @body_type = current_user.body_type
 
   end
+
 
 
   def judge
@@ -63,7 +65,7 @@ class HomesController < ApplicationController
 
 private
 
-  def usr_params
+  def user_params
     params.require(:user).permit(:name, :image, :telephone_number, :is_deleted, :height, :weight, :age, :living_area, :body_type, :exercise_frequency, :fat_percentage, :introduction)
   end
 
