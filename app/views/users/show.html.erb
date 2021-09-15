@@ -6,6 +6,11 @@
 <% end %>
 </div>
 
+<p><%= image_tag("red.png", :size => "50x50") %></p>
+
+  <%#= attachment_image_tag @body_type, :image, size: "325x240" %>
+  <%#= image_tag @body_type.image.variant(resize: '200x200' )  %>
+
 <div>
 <%= @user.name %>
 </div>

@@ -9,20 +9,29 @@
 
 
 
-BodyType.create!(
+  type1 = BodyType.create!(
   name: "レッドビルダー",
-  description: "極限まで筋肉を磨き上げたあなた！ボディを維持するには、日々のトレーニングと健康管理は欠かせません！バディと一緒なら、楽しく鍛えられますよ！"
-)
+  description: "極限まで筋肉を磨き上げたあなた！ボディを維持するには、日々のトレーニングと健康管理は欠かせません！バディと一緒なら、楽しく鍛えられますよ！",
+  )
+type1.image.attach(io: File.open(Rails.root.join('app/assets/images/red.png')),
+                  filename: 'red.png')
+  # type1 = BodyType.find(1)
+  # type1.image.attach(io: File.open('app/assets/images/red.png'), filename: 'red.png')
 
 BodyType.create!(
   name: "バイオレットアスリート",
   description: "筋肉質でスポーティーなあなた！さらに筋肉を磨くのもよし、体型を維持するのもよし。バディと一緒にさらなる健康を目指しましょう！"
 )
 
-BodyType.create!(
+  type3 = BodyType.create!(
   name: "ブルーフィット",
-  description: "健康を意識し、バランスの取れた体型のあなた。ここから身体をさらにスリムにするもよし、筋肉をつけて身体を大きくするのもよし！なりたい自分に向かって、さらに磨きをかけよう！"
+  description: "健康を意識し、バランスの取れた体型のあなた。ここから身体をさらにスリムにするもよし、筋肉をつけて身体を大きくするのもよし！なりたい自分に向かって、さらに磨きをかけよう！",
 )
+type3.image.attach(io: File.open(Rails.root.join('app/assets/images/blue.png')),
+                  filename: 'blue.png')
+# type3.image.attach(io: File.open(Rails.root.join('app/assets/images/blue.png')),
+#                   filename: 'blue.png')
+
 
 BodyType.create!(
   name: "シアンスレンダー",

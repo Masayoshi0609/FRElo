@@ -68,4 +68,4 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'image_processing', '~> 1.2'
 gem 'enum_help'
 gem 'mini_magick'
-gem 'aws-sdk-s3', require: false
+gem 'aws-sdk-s3'

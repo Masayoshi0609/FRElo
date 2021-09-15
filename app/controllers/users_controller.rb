@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @body_type = @user.body_type
     if @user.update(user_params)
       redirect_to user_path(@user.id)
     else
@@ -34,6 +35,9 @@ private
     params.require(:user).permit(:name, :image, :telephone_number, :is_deleted, :height, :weight, :age, :living_area, :body_type, :exercise_frequency, :fat_percentage, :introduction)
   end
 
+  def body_type_params
+    params.require(:body_type).permit(:description, :name, :image)
+  end
 
 
 end
