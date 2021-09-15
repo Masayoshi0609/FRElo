@@ -6,10 +6,8 @@
 <% end %>
 </div>
 
-<p><%= image_tag("red.png", :size => "50x50") %></p>
-
-  <%#= attachment_image_tag @body_type, :image, size: "325x240" %>
-  <%#= image_tag @body_type.image.variant(resize: '200x200' )  %>
+  <!--ユーザーに対応した属性タイプのアイコンを表示させる記述-->
+  <%= image_tag @body_type.image.variant(resize: '50x50' )  %>
 
 <div>
 <%= @user.name %>

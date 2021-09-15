@@ -32,18 +32,20 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
-    パスワード
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上で入力してください)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <!--パスワード欄は、テスト効率およびユーザーの安全性の観点から一旦非表示。-->
+  <!--変更する場合は、別途の処理を設けるなどしたほうがセキュリティは安全そう。-->
+  <!--<div class="field">-->
+  <!--  パスワード-->
+    <%# if @minimum_password_length %>
+    <!--<em>(<%#= @minimum_password_length %> 文字以上で入力してください)</em>-->
+    <!--<%# end %><br />-->
+    <%#= f.password_field :password, autocomplete: "new-password" %>
+  <!--</div>-->
 
-  <div class="field">
-    パスワード（再確認）<br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <!--<div class="field">-->
+  <!--  パスワード（再確認）<br />-->
+    <%#= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <!--</div>-->
 
   <div class="field">
     電話番号<br />
@@ -84,6 +86,13 @@
     体脂肪率(%)小数点は切捨て入力してください。<br />
     <%= f.number_field :fat_percentage, autofocus: true %>
   </div>
+
+  <div class="field">
+    属性タイプ<br />
+    <%= f.select :body_type_id, BodyType.all.map { |body_type| [body_type.name, body_type.id] } %>
+  </div>
+
+
 
 
   <%= f.file_field :image %>

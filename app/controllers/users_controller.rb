@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @body_type = @user.body_type
   end
 
   def edit
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @body_type = @user.body_type
+
     if @user.update(user_params)
       redirect_to user_path(@user.id)
     else
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
 private
 
   def user_params
-    params.require(:user).permit(:name, :image, :telephone_number, :is_deleted, :height, :weight, :age, :living_area, :body_type, :exercise_frequency, :fat_percentage, :introduction)
+    params.require(:user).permit(:name, :image, :telephone_number, :is_deleted, :height, :weight, :age, :living_area, :body_type_id, :exercise_frequency, :fat_percentage, :introduction)
   end
 
   def body_type_params

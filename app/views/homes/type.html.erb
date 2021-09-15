@@ -1,2 +1,21 @@
-<h1>Homes#type</h1>
-<p>Find me in app/views/homes/type.html.erb</p>
+<h2>FREloの属性タイプ一覧</h2>
+
+<p>自分にしっくりきた属性が見つかったら、
+プロフィール画面から変更しよう！<p> <br />
+
+<%= link_to "プロフィール設定画面へ移動", edit_user_path(@user.id) %>
+
+
+<% @body_types.each do |body| %>
+
+<div>
+<%= body.name %>
+<%= image_tag body.image.variant(resize: '150x150' )  %>
+</div>
+
+<div>
+<%= body.description %>
+</div>
+
+<% end %>
+
