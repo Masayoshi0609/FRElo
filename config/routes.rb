@@ -23,8 +23,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update, :create] do
     resource :relationships, only: [:create, :destroy]
-    get "following" => 'relationships#following', as: "following"
-    get "followed" => 'relationships#followed', as: "followed"
+    get "followings" => 'relationships#followings', as: "followings"
+    get "followers" => 'relationships#followers', as: "followers"
     resource :home_timelines, only: [:show]
     resource :hot_timelines, only: [:show]
     resource :buddy_timelines, only: [:show]

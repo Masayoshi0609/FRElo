@@ -1,0 +1,52 @@
+<body>
+ <main class="mb-auto">
+  <div class="container-fluid">
+ 	 <div class="row">
+		<div class="col no-gutters">
+	   <h2>Followeings Users</h2>
+
+	    <% if @users.exists? %>
+	     <table class="table table-hover table-inverse">
+	      <thead>
+	       <tr>
+	        <th>image</th>
+	        <th>name</th>
+	        <th colspan="3"></th>
+	       </tr>
+        </thead>
+
+	      <tbody>
+		     <% @users.each do |user| %>
+					<tr>
+						<td>
+						<%#= attachment_image_tag user, :profile_image, size: "40x40", format: "jpeg", fallback: "no_image.jpg" %>
+						</td>
+				    <td>
+				  	  <%= user.name %>
+						</td>
+
+						<td>
+							フォロー数: <%= user.followings.count %>
+						</td>
+
+						<td>
+							フォロワー数: <%= user.followers.count %>
+						</td>
+
+						<td>
+				  		<%= link_to user_path(user.id) do %>
+					    Show
+					    <% end %>
+					  </td>
+					</tr>
+					<% end %>
+				</tbody>
+			 </table>
+			<% else %>
+			<p>ユーザーはいません</p>
+			<% end %>
+		 </div>
+		</div>
+  </div>
+ </main>
+</body>

@@ -1,53 +1,87 @@
-<h2>ユーザープロフィール</h2>
+<body>
+ <main class="mb-auto">
+  <div class="container">
+   <div class="row">
+    <div class="col-md-3">
+     <%= render "users/user_info", user: @user %>
 
-<div>
-<% if @user.image.attached? %>
-  <%= image_tag @user.image.variant(resize: '200x200' )  %>
-<% end %>
-</div>
+    </div>
 
-  <!--ユーザーに対応した属性タイプのアイコンを表示させる記述-->
-  <%= image_tag @body_type.image.variant(resize: '50x50' )  %>
+    <div class="col-md-8 offset-md-1">
 
-<div>
-<%= @user.name %>
-</div>
-<div>
-  <%= @user.body_type.name %>
-</div>
-<div>
-<%= @user.introduction %>
-</div>
+      <h2>ユーザープロフィール</h2>
 
-<br />
+      <div>
+      <!--画像が添付されていなくてもエラーが出ないようにする記述-->
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image.variant(resize: '200x200' )  %>
+      <% end %>
+      </div>
 
-<div>
-属性タイプ：  <%= @user.body_type.name %>
-</div>
+        <!--ユーザーに対応した属性タイプのアイコンを表示させる記述-->
+        <%= image_tag @body_type.image.variant(resize: '50x50' )  %>
 
-<div>
-年齢：        <%= @user.age %>
-</div>
+      <div>
+      <%= @user.name %>
+      </div>
+      <div>
+        <%= @user.body_type.name %>
+      </div>
+      <div>
+      <%= @user.introduction %>
+      </div>
 
-<div>
-身長：        <%= @user.height %>
-</div>
+      <br />
 
-<div>
-体重：        <%= @user.weight %>
-</div>
+      <div>
+      属性タイプ：  <%= @user.body_type.name %>
+      </div>
 
-<div>
-体脂肪率：    <%= @user.fat_percentage %>
-</div>
+      <div>
+      年齢：        <%= @user.age %>
+      </div>
 
-<div>
-運動頻度：    <%= @user.exercise_frequency %>
-</div>
+      <div>
+      身長：        <%= @user.height %>
+      </div>
 
-<div>
-居住エリア：  <%= @user.living_area %>
-</div>
+      <div>
+      体重：        <%= @user.weight %>
+      </div>
+
+      <div>
+      体脂肪率：    <%= @user.fat_percentage %>
+      </div>
+
+      <div>
+      運動頻度：    <%= @user.exercise_frequency %>
+      </div>
+
+      <div>
+      居住エリア：  <%= @user.living_area %>
+      </div>
+
+      <% if @user.id == current_user.id %>
+      <%= link_to "プロフィール編集", edit_user_path(@user.id) %>
+      <% end %>
 
 
-<%= link_to "プロフィール編集", edit_user_path(@user.id) %>
+      <% if @user.id == current_user.id %>
+      <% else %>
+        <% if current_user.following?(@user) %>
+        <%= link_to "Unfollow", user_relationships_path(@user.id), method: :delete %>
+        <% else %>
+          <%= link_to "Follow", user_relationships_path(@user.id), method: :post %>
+        <% end %>
+      <%end %>
+
+      <div>
+       <%= link_to "マイページに戻る", mypage_path %>
+      </div>
+
+    </div>
+   </div>
+  </div>
+ </main>
+
+</body>

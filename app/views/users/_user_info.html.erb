@@ -3,7 +3,11 @@
  <tbody>
  	<tr></tr>
  	<tr>
- 		<th><%= image_tag user.image.variant(resize: '200x200' ) %></th>
+ 		<th>
+ 		  <% if user.image.attached? %>
+ 		  　<%= image_tag user.image.variant(resize: '200x200' ) %>
+ 		  <% end %>
+ 		</th>
  	</tr>
  	<tr>
  		<th><%= user.name  %></th>
@@ -18,18 +22,18 @@
  	</tr>
 
  	<!--フォロー機能作成したら、下記コードも実装。-->
- 	<!--<tr>-->
- 	<!--	<th>follows</th>-->
- 	<!--	<th><%#= link_to user_followings_path(user) do %>-->
- 	<!--		<%#= user.followings.count %>-->
- 	<!--		<%# end %></th>-->
- 	<!--</tr>-->
- 	<!--<tr>-->
- 	<!--	<th>followers</th>-->
- 	<!--	<th><%#= link_to user_followers_path(user) do %>-->
- 	<!--		<%#= user.followers.count %></th>-->
- 	<!--		<%# end %>-->
- 	<!--</tr>-->
+ 	<tr>
+ 		<th>follows</th>
+ 		<th><%= link_to user_followings_path(user) do %>
+ 			<%= user.followings.count %>
+ 			<% end %></th>
+ 	</tr>
+ 	<tr>
+ 		<th>followers</th>
+ 		<th><%= link_to user_followers_path(user) do %>
+ 			<%= user.followers.count %></th>
+ 			<% end %>
+ 	</tr>
  </tbody>
 </table>
 
@@ -37,5 +41,5 @@
   <%= link_to "マイページ", mypage_path %>
 </div>
 <div>
-  <%= link_to "プロフィール設定画面へ移動", edit_user_path(@user.id) %>
+  <%= link_to "プロフィール", user_path(current_user.id) %>
 </div>
