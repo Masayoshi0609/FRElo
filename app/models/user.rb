@@ -9,8 +9,9 @@ class User < ApplicationRecord
   has_one_attached :image
 
   belongs_to :body_type
+  has_many :posts, dependent: :destroy
 
-  
+
 
   #ActiveStorage使用のための記述だが、導入までコメントアウトしておく。
   # validate :image_type

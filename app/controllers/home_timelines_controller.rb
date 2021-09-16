@@ -2,7 +2,7 @@ class HomeTimelinesController < ApplicationController
   def show
     @user = current_user
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.all.reverse_order
   end
 
 

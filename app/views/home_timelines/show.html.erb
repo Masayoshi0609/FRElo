@@ -1,27 +1,45 @@
-<h1>マイページ</h1>
+<body>
+ <main class="mb-auto">
+  <div class="container">
+   <div class="row">
+    <div class="col-md-3">
+     <%= render "users/user_info", user: @user %>
+     
+    </div>
 
-<% if @user.image.attached? %>
-  <%= image_tag @user.image %>
-<% end %>
+    <div class="col-md-8 offset-md-1">
 
-<div>
+        <%= render "posts/new_post", post: @post %>
 
-<%= render "posts/new_post", post: @post %>
+        <% @posts.each do |post| %>
 
-<% @posts.each do |post| %>
+            <div>
 
-<div>
-<%= post.body %>
-</div>
+            <%= @user.name %>
+            <%= post.created_at %>
 
-<div>
-
-<% if post.image.attached? %>
-  <%= image_tag post.image %>
-<% end %>
-</div>
-
-<% end %>
+            </div>
 
 
-</div>
+            <div>
+            <%= link_to post_path(post.id) do %>
+            <%= post.body %>
+            <% end %>
+
+            </div>
+
+            <div>
+
+            <% if post.image.attached? %>
+              <%= image_tag post.image %>
+            <% end %>
+            </div>
+
+            <% end %>
+
+    </div>
+   </div>
+  </div>
+ </main>
+
+</body>

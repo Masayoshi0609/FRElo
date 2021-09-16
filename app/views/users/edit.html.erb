@@ -16,6 +16,9 @@
 <%= @user.introduction %>
 </div>
 
+<%= link_to "自分のタイムラインに移動", mypage_path %>
+
+
 <%= form_with model: @user, local:true do |f| %>
 
   <!--この記述はdevise由来なので、正しいものに書き換えるようにする。-->
@@ -55,6 +58,11 @@
   <br />
 
   <h4>次の項目は、オープンにしても良い内容を入力してください。</h4>
+
+   <div class="field">
+    自己紹介<br />
+    <%= f.text_area :introduction, autofocus: true %>
+  </div>
 
   <div class="field">
     居住エリア<br />

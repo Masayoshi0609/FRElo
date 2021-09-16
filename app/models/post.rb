@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   # ActiveStorageを使用するための記述
   has_one_attached :image
+  belongs_to :user
 
 
   #バリデーション実装時に検証する必要あり
@@ -18,8 +19,8 @@ private
   #   end
   # end
 
-  def post_params
-    params.require(:post).permit(:body, :image)
-  end
+  # def post_params
+  #   params.require(:post).permit(:body, :image)
+  # end
 
 end

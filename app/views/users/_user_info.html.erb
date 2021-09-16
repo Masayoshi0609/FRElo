@@ -1,0 +1,41 @@
+
+<table class="table">
+ <tbody>
+ 	<tr></tr>
+ 	<tr>
+ 		<th><%= image_tag user.image.variant(resize: '200x200' ) %></th>
+ 	</tr>
+ 	<tr>
+ 		<th><%= user.name  %></th>
+ 	</tr>
+ 	 	<tr>
+ 		<th><%= user.body_type.name  %></th>
+ 	</tr>
+
+ 	<tr>
+ 		<th>自己紹介</th>
+ 		<th><%= user.introduction %></th>
+ 	</tr>
+
+ 	<!--フォロー機能作成したら、下記コードも実装。-->
+ 	<!--<tr>-->
+ 	<!--	<th>follows</th>-->
+ 	<!--	<th><%#= link_to user_followings_path(user) do %>-->
+ 	<!--		<%#= user.followings.count %>-->
+ 	<!--		<%# end %></th>-->
+ 	<!--</tr>-->
+ 	<!--<tr>-->
+ 	<!--	<th>followers</th>-->
+ 	<!--	<th><%#= link_to user_followers_path(user) do %>-->
+ 	<!--		<%#= user.followers.count %></th>-->
+ 	<!--		<%# end %>-->
+ 	<!--</tr>-->
+ </tbody>
+</table>
+
+<div>
+  <%= link_to "マイページ", mypage_path %>
+</div>
+<div>
+  <%= link_to "プロフィール設定画面へ移動", edit_user_path(@user.id) %>
+</div>
