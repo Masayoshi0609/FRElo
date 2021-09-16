@@ -8,9 +8,8 @@ class HomesController < ApplicationController
   end
 
   def welcome
-
-    @user = current_user
-    @body_type = current_user.body_type
+   @user = current_user
+   @body_type = current_user.body_type
 
   end
 

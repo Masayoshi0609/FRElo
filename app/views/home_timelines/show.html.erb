@@ -3,3 +3,25 @@
 <% if @user.image.attached? %>
   <%= image_tag @user.image %>
 <% end %>
+
+<div>
+
+<%= render "posts/new_post", post: @post %>
+
+<% @posts.each do |post| %>
+
+<div>
+<%= post.body %>
+</div>
+
+<div>
+
+<% if post.image.attached? %>
+  <%= image_tag post.image %>
+<% end %>
+</div>
+
+<% end %>
+
+
+</div>

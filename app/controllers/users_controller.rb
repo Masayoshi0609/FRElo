@@ -13,6 +13,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def create
+
+
+  end
+
+
   def update
     @user = User.find(params[:id])
 
@@ -35,6 +41,7 @@ private
   def user_params
     params.require(:user).permit(:name, :image, :telephone_number, :is_deleted, :height, :weight, :age, :living_area, :body_type_id, :exercise_frequency, :fat_percentage, :introduction)
   end
+
 
   def body_type_params
     params.require(:body_type).permit(:description, :name, :image)
