@@ -35,7 +35,14 @@
             <% end %>
             </div>
 
+
+            <% if post.liked_by?(current_user) %> <!-- ログインしているユーザーがいいねしたかどうかで分岐 -->
+                <p><span>いいね！をやめる: </span><%=link_to post.likes.count, post_likes_path(post.id), method: :delete %></p>
+            <% else %>
+                <p><span>いいね！する: </span><%=link_to post.likes.count, post_likes_path(post.id), method: :post %></p>
             <% end %>
+
+         <% end %>
 
     </div>
    </div>

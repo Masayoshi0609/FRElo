@@ -21,6 +21,11 @@ class User < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
 
+  #いいね機能に関するアソシエーション
+  has_many :likes, dependent: :destroy
+  #下記の記述により、view側でいいねしたツイートを取得しやすくする
+  has_many :like_posts, through: :likes, source: :post
+
 
   #コントローラー側でフォロー機能を動作させるためのメソッド定義
   def follow(user_id)

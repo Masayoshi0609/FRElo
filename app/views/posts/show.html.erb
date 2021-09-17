@@ -6,4 +6,11 @@
   <%= image_tag @post.image %>
   <% end %>
 
+  <% if @post.liked_by?(current_user) %> <!-- ログインしているユーザーがいいねしたかどうかで分岐 -->
+                <p><span>いいね解除: </span><%=link_to @post.likes.count, post_likes_path(@post.id), method: :delete %></p>
+            <% else %>
+                <p><span>いいね登録: </span><%=link_to @post.likes.count, post_likes_path(@post.id), method: :post %></p>
+            <% end %>
+
+
 	<%= link_to "Destroy", post_path(@post.id), method: :delete, "data-confirm" => "Are you sure?", class: "btn btn-sm btn-danger" %>

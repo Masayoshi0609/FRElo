@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @body_type = @user.body_type
+    
   end
 
   def edit

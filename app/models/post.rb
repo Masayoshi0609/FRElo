@@ -1,7 +1,16 @@
 class Post < ApplicationRecord
   # ActiveStorageを使用するための記述
   has_one_attached :image
+
   belongs_to :user
+
+  #いいね機能に関するアソシエーション
+  has_many :likes, dependent: :destroy
+  
+  def liked_by?(user)
+   likes.where(user_id: user.id).exists?
+  end
+
 
 
   #バリデーション実装時に検証する必要あり
