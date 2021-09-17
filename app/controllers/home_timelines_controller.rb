@@ -1,10 +1,16 @@
 class HomeTimelinesController < ApplicationController
+  
+   
+
+  
+  
   def show
     @user = current_user
     @post = Post.new
     @posts = Post.all.reverse_order
     # @like_posts = @user.like_posts　#いいねした投稿を表示させる記述
   end
+
 
 
 private
