@@ -26,6 +26,10 @@ class User < ApplicationRecord
   #下記の記述により、view側でいいねしたツイートを取得しやすくする
   has_many :like_posts, through: :likes, source: :post
 
+  #コメント機能に関するアソシエーション
+  has_many :comments, dependent: :destroy
+
+
 
   #コントローラー側でフォロー機能を動作させるためのメソッド定義
   def follow(user_id)

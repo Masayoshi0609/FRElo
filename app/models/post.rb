@@ -4,9 +4,12 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
+  #コメント機能に関するアソシエーション
+  has_many :comments, dependent: :destroy
+
   #いいね機能に関するアソシエーション
   has_many :likes, dependent: :destroy
-  
+
   def liked_by?(user)
    likes.where(user_id: user.id).exists?
   end

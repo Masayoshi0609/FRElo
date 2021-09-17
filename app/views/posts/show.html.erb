@@ -11,4 +11,22 @@
   </div>
 
 
-	<%= link_to "Destroy", post_path(@post.id), method: :delete, "data-confirm" => "Are you sure?", class: "btn btn-sm btn-danger" %>
+
+  <div>
+  コメント数:<%= @post.comments.count %>
+  </div>
+
+  <!--ここからコメント一覧の記述-->
+  <div id="comments_<%= @post.id %>">
+    <%= render "comments/comments", comments: @post.comments %>
+  </div>
+
+  <!--ここからコメント投稿の記述-->
+  <div>
+    <%= render "comments/form", post: @post, comment: @comment %>
+  </div>
+
+
+  <% if @post.user == current_user %>
+	  <%= link_to "Destroy", post_path(@post.id), method: :delete, "data-confirm" => "Are you sure?", class: "btn btn-sm btn-danger" %>
+	<% end %>
