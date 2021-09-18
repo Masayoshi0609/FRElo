@@ -2,12 +2,26 @@
  <main class="mb-auto">
   <div class="container">
    <div class="row">
+    
     <div class="col-md-3">
      <%= render "users/user_info", user: @user %>
-
     </div>
 
     <div class="col-md-8 offset-md-1">
+
+        <!--タグの一覧を表示する記述-->
+        <h4>タグリスト</h4>
+         <% @tag_list.each do |list| %>
+          <%= link_to tags_posts_path(tag_id: list.id) do %>
+           <%= list.tag_name %>
+           <%= list.posts.count %>
+          <% end %>
+
+          <%= link_to post_path(post.id) do %>
+           <%= post.body %>
+          <% end %>
+
+         <%end %>
 
         <%= render "posts/new_post", post: @post %>
 
@@ -19,7 +33,6 @@
             <%= post.created_at %>
 
             </div>
-
 
             <div>
             <%= link_to post_path(post.id) do %>

@@ -1,13 +1,14 @@
 class HomeTimelinesController < ApplicationController
-  
-   
 
-  
-  
+
+
+
+
   def show
     @user = current_user
     @post = Post.new
     @posts = Post.all.reverse_order
+    @tag_list = Tag.all
   end
 
 

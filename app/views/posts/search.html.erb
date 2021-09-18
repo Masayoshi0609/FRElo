@@ -1,0 +1,47 @@
+<h2>投稿一覧</h2>
+
+<!--タグの一覧-->
+<% @tag_list.each do |list| %>
+
+  <%= link_to tag_posts_path(post_tag_id: list.id) do %>
+    <%= list.tag_name %>
+    <%= list.posts.count %>
+  <% end %>
+
+<% end %>
+
+
+<!--タグによって絞り込んだ投稿一覧-->
+<div>
+ <p>タグが"<%= @tag.tag_name %>"</p>
+
+<!--タグのついた投稿一覧表示-->
+ <% @posts.each do |post| %>
+
+<div>
+
+  <%= post.user.name %>
+  <%= post.created_at %>
+
+</div>
+
+
+<div>
+  <%= link_to post_path(post.id) do %>
+    <%= post.body %>
+  <% end %>
+
+</div>
+
+<div>
+
+  <% if post.image.attached? %>
+    <%= image_tag post.image %>
+  <% end %>
+</div>
+
+<div id="likes_buttons_<%= post.id %>">
+  <%= render partial: "likes/like", locals: { post: post } %>
+</div>
+
+<% end %>

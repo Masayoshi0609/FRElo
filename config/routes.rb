@@ -34,7 +34,9 @@ Rails.application.routes.draw do
 
 
 
-  resources :tags, only: [:show, :create]
+  resources :tags, only: [:show, :create] do
+    get "posts", to: "posts#search"
+  end
 
   get 'users/:id/confirm' => "users#confirm"
   get 'users/:id/quit' => "users#quit"
