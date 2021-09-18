@@ -17,7 +17,7 @@
   </td>
   <td>
   	 <% if post_comment.user == current_user %>
-  	  <%= link_to "Destroy", post_comment_path(@post, post_comment), method: :delete, "data-confirm" => "Are you sure?", class: "btn btn-sm btn-danger", remote: true %>
+  	  <%= link_to "Destroy", post_comment_path(@post_detail, post_comment), method: :delete, "data-confirm" => "Are you sure?", class: "btn btn-sm btn-danger", remote: true %>
   	 <% end %>
   </td>
 
