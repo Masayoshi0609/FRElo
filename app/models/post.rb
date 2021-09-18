@@ -26,12 +26,12 @@ class Post < ApplicationRecord
     new_tags = sent_tags - current_tags
 
     old_tags.each do |old|
-      self.post_tags.delete PostTag.find_by(tag_name: old)
+      self.tags.delete Tag.find_by(tag_name: old)
     end
 
     new_tags.each do |new|
-      new_post_tag = PostTag.find_or_create_by(tag_name: new)
-      self.post_tags << new_post_tag
+      new_tag = Tag.find_or_create_by(tag_name: new)
+      self.tags << new_tag
     end
   end
 

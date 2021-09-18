@@ -8,7 +8,7 @@
 
   <br>
   <p>タグ：</p>
-  <%= @post_tags.each do |tag|  %>
+  <% @post_tags.each do |tag|  %>
     <%= link_to tag_posts_path(tag_id: tag.id) do %>
       <%= tag.tag_name %>
       (<%= tag.posts.count %>)

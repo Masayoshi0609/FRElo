@@ -7,8 +7,8 @@
   </div>
 
   <div class="form-group">
-  <p>スペースを入力することで複数のタグ付けが可能です。<br />
-  例：音楽　文芸　スポーツ</p>
+  <p>"半角スペース"で区切ることで、複数のタグ付けができます。<br />
+  例：スポーツ 秋 => 「スポーツ」「秋」のタグ付きで投稿</p>
   <%= f.text_field :tag_name, class: "form-control" %>
 
   </div>
@@ -17,5 +17,4 @@
 
   <%= f.submit "つぶやきを投稿", class: "btn btn-success" %>
 
-  </div>
 <% end %>

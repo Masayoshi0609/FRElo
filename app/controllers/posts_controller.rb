@@ -10,8 +10,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    # @post = Post.new(post_params)
+    # @post.user_id = current_user.id
+    @post = current_user.posts.new(post_params)        
     tag_list = params[:post][:tag_name].split(nil)
     if @post.save
       @post.save_tag(tag_list)
