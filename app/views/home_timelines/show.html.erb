@@ -20,11 +20,12 @@
 
         <%= render "posts/new_post", post: @post %>
 
-        <% @posts.each do |post| %>
+        <% @posts.each do |po| %>
 
             <div>
-
-            <%= @user.name %>
+            <%#= link_to user_path(post.user.id) do %>
+             <%= post.user.id %>
+            <%# end %>
             <%= post.created_at %>
 
             </div>

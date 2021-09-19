@@ -1,9 +1,6 @@
 class HomeTimelinesController < ApplicationController
 
 
-
-
-
   def show
     @user = current_user
     @post = Post.new
@@ -20,7 +17,7 @@ private
   end
 
   def post_params
-    params.require(:post).permit(:body, :image)
+    params.require(:post).permit(:body, :image, :user_id)
   end
 
 end

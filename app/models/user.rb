@@ -29,8 +29,6 @@ class User < ApplicationRecord
   #コメント機能に関するアソシエーション
   has_many :comments, dependent: :destroy
 
-
-
   #コントローラー側でフォロー機能を動作させるためのメソッド定義
   def follow(user_id)
    relationships.create(followed_id: user_id)
@@ -43,10 +41,26 @@ class User < ApplicationRecord
   def following?(user)
    followings.include?(user)
   end
+  
+  #検索機能に関する記述
+
+  def self.search(search, word)
+   if search == "forward_match"
+    @user = User.where("name LIKE?", "#{word}%")
+   elsif search == "backward_match"
+    @user = User.where("name LIKE?", "%#{word}")
+   elsif search == "perfect_match"
+    @user = User.where(name: "#{word}")
+   elsif search == "partial_match"
+    @user = User.where("name LIKE?", "%#{word}%")
+   else
+    @user = User.all
+   end
+  end
 
 
 
-  #ActiveStorage使用のための記述だが、導入までコメントアウトしておく。
+  #ActiveStorage使用のための記述だが、エラーが出るため一旦コメントアウトしておく。
   # validate :image_type
 
 private

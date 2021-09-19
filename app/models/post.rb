@@ -35,7 +35,21 @@ class Post < ApplicationRecord
     end
   end
 
+  #検索機能に関する記述
 
+  def self.search(search, word)
+   if search == "forward_match"
+    @post = Post.where("body LIKE?", "#{word}%")
+   elsif search == "backward_match"
+    @post = Post.where("body LIKE?", "%#{word}")
+   elsif search == "perfect_match"
+    @post = Post.where(body: "#{word}")
+   elsif search == "partial_match"
+    @post = Post.where("body LIKE?", "%#{word}%")
+   else
+    @post = Post.all
+   end
+  end
 
   #バリデーション実装時に検証する必要あり
   # validate :image_type
