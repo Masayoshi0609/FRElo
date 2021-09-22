@@ -69,3 +69,8 @@ gem 'image_processing', '~> 1.2'
 gem 'enum_help'
 gem 'mini_magick'
 gem 'aws-sdk-s3'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
