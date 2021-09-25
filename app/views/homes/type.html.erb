@@ -1,21 +1,25 @@
-<h2>FREloの属性タイプ一覧</h2>
-
-<p>自分にしっくりきた属性が見つかったら、
-プロフィール画面から変更しよう！<p> <br />
-
-<%= link_to "プロフィール設定画面へ移動", edit_user_path(@user.id) %>
-
-
-<% @body_types.each do |body| %>
-
-<div>
-<%= body.name %>
-<%= image_tag body.image.variant(resize: '150x150' )  %>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="texts-wrapper">
+      <div class="contents-title text-center">
+        <h2>FREloの属性タイプ一覧</h2>
+        <p>自分にしっくりきた属性が見つかったら、プロフィール画面から変更しよう！<p> <br />
+        <div class="row">
+          <% @body_types.each do |body| %>
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+              <div class="card h-100">
+                <%= link_to edit_user_path(@user.id) do %>
+                  <div class="card-body">
+                    <%= image_tag body.image.variant(gravity: :center, resize: "150x150^", crop: "150x150+0+0").processed %>
+                    <p class="card-title"><strong><%= body.name %></strong></p>
+                <% end %>
+                  <p class="card-text"><%= body.description %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div>
-<%= body.description %>
-</div>
-
-<% end %>
-

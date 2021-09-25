@@ -1,8 +1,21 @@
-<h1>健康は、仲間と一緒に手に入れよう。</h1>
+<div class="jumbotron jumbotron-fluid d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h2 class="">健康は、仲間と一緒に手に入れよう</h2>
+            <p class="">FREloは、一緒に運動や食事を楽しんでシェアする「バディ」に出会えるSNSです。</p>
+        </div>
+        <div class="col text-center">
+            <br />
+            <% if user_signed_in? %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-lg btn-danger" %>
+            <% else %>
+                <%= link_to "新規登録", new_user_registration_path, class: "btn btn-lg btn-success" %>
+                <%= link_to "ログイン", new_user_session_path, class: "btn btn-lg btn-primary" %>
+            <% end %>
+        </div>
+    </div>
+  </div>
+</div>
 
-<p>FREloは、一緒に運動や食事を楽しんでシェアする「バディ」に出会えるSNSです。test</p>
 
-
-<%= link_to "新規登録", new_user_registration_path, class: "btn btn-sm btn-success" %>
-
-<%= link_to "ログイン", new_user_session_path, class: "btn btn-sm btn-success" %>

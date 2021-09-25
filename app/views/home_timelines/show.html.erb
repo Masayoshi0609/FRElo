@@ -24,9 +24,12 @@
 
             <div>
             <%= link_to user_path(post.user.id) do %>
+             <% if post.user.image.attached? %>
+              <%= image_tag post.user.image.variant(gravity: :center, resize: "50x50^", crop: "50x50+0+0").processed %>
+             <% end %>
              <%= post.user.name %>
             <% end %>
-            <%= post.created_at %>
+            <%= post.created_at.strftime("%Y-%m-%d %H:%M") %>
 
             </div>
 

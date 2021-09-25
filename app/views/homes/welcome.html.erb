@@ -1,17 +1,26 @@
-<h1>さぁ、一緒にFReloでバディを探そう！</h1>
-<p>登録内容を元に、あなたのタイプ属性が決まりました！</p>
+<div class="container-fluid welcome d-flex align-items-center justify-content-center">
+  <div class="row text-left">
+    <div class="col-10">
 
-<h2>あなたの属性は<%= @body_type.name %>です</h2>
-<p><%= @body_type.description %></p>
-<br />
+        <h1><strong>さぁ、一緒にFReloでバディを探そう！</strong></h1>
+        <p>登録内容を元に、あなたのタイプ属性が決まりました！</p>
 
-<p>あなたのイメージと異なりますか？</p>
-<%= link_to "属性一覧を確認して、自分で選んでみる", body_type_path %>
+        <h2>あなたの属性は<strong><%= @body_type.name %></strong>です</h2>
+        <div class="col-8"
+            <p><%= @body_type.description %></p>
 
+        </div>
 
+        <h4><strong><%= link_to "さっそくFREloを使ってみる", mypage_path %></strong></h4>
 
-<br />
+        <div>
+            <br />
+            <p>あなたのイメージと異なりますか？</p>
+            <%= link_to "属性一覧を確認して、自分で選んでみる", body_type_path %>
 
-<p>プロフィール画像を設定しよう！</p>
-<%= link_to "プロフィール設定画面へ移動", edit_user_path(@user.id) %>
-
+            <p>プロフィール画像を設定しよう！</p>
+            <%= link_to "プロフィール設定画面へ移動", edit_user_path(@user.id) %>
+        </div>
+    </div>
+  </div>
+</div>

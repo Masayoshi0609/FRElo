@@ -17,3 +17,36 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.jumbotron {
+
+  height: 100vh;
+  background-image: image-url("/images/top.png");
+  background-size: cover;
+  background-position: center 50%;
+
+}
+
+.login {
+
+  height: 100vh;
+  background-image: image-url("/images/top.png");
+  background-size: cover;
+  background-position: center 50%;
+
+}
+
+
+.registration{
+  height: 100vh;
+  background-image: image-url("/images/registration.png");
+  background-size: cover;
+  background-position: center 50%;
+}
+
+.welcome{
+  height: 100vh;
+  background-image: image-url("/images/cycling.png");
+  background-size: cover;
+  background-position: center 50%;
+}

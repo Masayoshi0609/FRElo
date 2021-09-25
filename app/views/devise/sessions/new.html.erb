@@ -1,30 +1,34 @@
-<h2>ログイン</h2>
-<h4>おかえりなさい！</h4>
+<div class="container-fluid login d-flex align-items-center justify-content-center">
+  <div class="row text-center">
+    <div class="col">
 
-<!--form_for表記なので、form_withに変更しておく。エラーが出た場合は確認する。-->
-<%#= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <h2>ログイン</h2>
+      <h4>おかえりなさい！</h4>
 
-<%= form_with model: @user, url: user_session_path, local: true do |f| %>
-  <div class="field">
-    メールアドレス<br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+        <div class="field">
+          メールアドレス<br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
 
-  <div class="field">
-   パスワード<br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <div class="field">
+         パスワード<br />
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      パスワードを保存
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            パスワードを保存
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= f.submit "ログイン" %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
