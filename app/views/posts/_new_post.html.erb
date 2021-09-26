@@ -1,4 +1,4 @@
-<h2 class="mt-3">つぶやきを投稿</h2>
+<h2 class="mt-4">つぶやきを投稿</h2>
 
 <%= form_with model: post, local:true do |f| %>
 
@@ -7,14 +7,27 @@
   </div>
 
   <div class="form-group">
-  <p>"半角スペース"で区切ることで、複数のタグ付けができます。<br />
-  例：スポーツ 秋 => 「スポーツ」「秋」のタグ付きで投稿</p>
-  <%= f.text_field :tag_name, class: "form-control" %>
-
+    <p>"半角スペース"で区切ることで、複数のタグ付けができます。<br />
+    例：スポーツ 秋 => 「スポーツ」「秋」のタグ付きで投稿</p>
+    <%= f.text_field :tag_name, class: "form-control" %>
   </div>
 
-  <%= f.file_field :image %>
+  <i class="fas fa-camera-retro"></i><%= f.file_field :image %><%= f.submit "つぶやきを投稿", class: "btn btn-success" %>
 
-  <%= f.submit "つぶやきを投稿", class: "btn btn-success" %>
+  <div class="form-group mt-3">
+    <!--タグの一覧を表示する記述-->
+    <h6><i class="fas fa-tags"></i>人気のタグ付き投稿</h6>
+     <% @tag_list.each do |list| %>
+      <%= link_to tag_posts_path(tag_id: list.id) do %>
+       <%= list.tag_name %>
+       (<%= list.posts.count %>)
+      <% end %>
+     <%end %>
+     <div class="row mb-0">
+      <div class="col d-flex justify-content-center">
+       <%= paginate @tag_list %>
+      </div>
+     </div>
+  </div>
 
 <% end %>

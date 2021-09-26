@@ -3,8 +3,8 @@ class HomeTimelinesController < ApplicationController
   def show
     @user = current_user
     @post = Post.new
-    @posts = Post.all.reverse_order
-    @tag_list = Tag.all
+    @posts = Post.all.reverse_order.page(params[:page]).per(3)
+    @tag_list = Tag.all.reverse_order.page(params[:page]).per(7)
   end
 
 

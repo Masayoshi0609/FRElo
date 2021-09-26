@@ -3,56 +3,57 @@
   <div class="container">
    <div class="row">
 
-    <div class="col-md-3">
+    <div class="col-md-3 fixed_left">
      <%= render "users/user_info", user: @user %>
     </div>
 
     <div class="col-md-8 offset-md-1">
 
-        <!--タグの一覧を表示する記述-->
-        <h4>タグリスト</h4>
-         <% @tag_list.each do |list| %>
-          <%= link_to tag_posts_path(tag_id: list.id) do %>
-           <%= list.tag_name %>
-           <%= list.posts.count %>
-          <% end %>
-         <%end %>
-
         <%= render "posts/new_post", post: @post %>
 
-        <% @posts.each do |post| %>
 
-            <div>
-            <%= link_to user_path(post.user.id) do %>
-             <% if post.user.image.attached? %>
-              <%= image_tag post.user.image.variant(gravity: :center, resize: "50x50^", crop: "50x50+0+0").processed %>
+         <% @posts.each do |post| %>
+          <div class="border border-secondary rounded p-2 my-2">
+           <%= link_to user_path(post.user.id) do %>
+             <div>
+              <% if post.user.image.attached? %>
+                <%= image_tag post.user.image.variant(gravity: :center, resize: "50x50^", crop: "50x50+0+0").processed, class: "rounded-circle mx-auto" %>
+              <% end %>
+              <%= post.user.name %>
+           <% end %>
+              <%= post.created_at.strftime("%Y-%m-%d %H:%M") %>
+
+             </div>
+
+             <div>
+             <%= link_to post_path(post.id) do %>
+             <%= post.body %>
              <% end %>
-             <%= post.user.name %>
-            <% end %>
-            <%= post.created_at.strftime("%Y-%m-%d %H:%M") %>
 
-            </div>
+             </div>
 
-            <div>
-            <%= link_to post_path(post.id) do %>
-            <%= post.body %>
-            <% end %>
+             <div>
 
-            </div>
+             <% if post.image.attached? %>
+               <%= image_tag post.image.variant(resize: "200x200" ).processed %>
+             <% end %>
+             </div>
 
-            <div>
+             <div id="likes_buttons_<%= post.id %>">
+               <%= render partial: "likes/like", locals: { post: post } %>
+               <%= link_to post_path(post.id) do %>
+                コメント数:<%= post.comments.count %>
+               <% end %>
+             </div>
+           </div>
+          <% end %>
 
-            <% if post.image.attached? %>
-              <%= image_tag post.image %>
-            <% end %>
-            </div>
 
-            <div id="likes_buttons_<%= post.id %>">
-              <%= render partial: "likes/like", locals: { post: post } %>
-            </div>
-
-         <% end %>
-
+         <div class="row">
+          <div class="col d-flex justify-content-center">
+           <%= paginate @posts %>
+          </div>
+         </div>
     </div>
    </div>
   </div>

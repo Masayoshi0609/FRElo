@@ -5,19 +5,19 @@
  	<tr>
  		<th>
  		  <% if user.image.attached? %>
- 		  　<%= image_tag user.image.variant(gravity: :center, resize: "150x150^", crop: "150x150+0+0") %>
+ 		  　<%= image_tag user.image.variant(gravity: :center, resize: "150x150^", crop: "150x150+0+0"), class: "rounded-circle mx-auto" %>
  		  <% end %>
  		</th>
  	</tr>
  	<tr>
  		<th><%= image_tag user.body_type.image.variant(gravity: :center, resize: "20x20^", crop: "20x20+0+0") %><%= user.name  %></th>
 
-  <% if user.introduction.present? %>
- 	<tr>
- 	 	<th><%= user.introduction %></th>
- 	</tr>
- 	<% else %>
- 	<% end %>
+  <!--<%# if user.introduction.present? %>-->
+ 	<!--<tr>-->
+ 	<!-- 	<th><%#= user.introduction %></th>-->
+ 	<!--</tr>-->
+ 	<!--<%# else %>-->
+ 	<!--<%# end %>-->
 
  	<!--フォロー機能箇所-->
  	<tr>

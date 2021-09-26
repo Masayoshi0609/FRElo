@@ -7,12 +7,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- コード追加　Font Awesome読み込みコード-->
+　　<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   </head>
 
   <!--<body class="d-flex flex-column vh-100">-->
   <body>
 
-    <header class="shadow-sm">
+    <header class="shadow-sm fixed-top bg-light">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <a class="navbar-brand p-3" href="/">FRElo</a>
@@ -58,10 +60,10 @@
       </nav>
     </header>
 
-    <main>
+    <main class="pb-500">
     <%= yield %>
     </main>
-    <footer class="bg-dark text-white pt-5 pb-4">
+    <footer class="bg-dark text-white pt-5 pb-4 fixed-bottom">
       <div class="container">
         <div class="row no-gutters">
           <div class="col-md-4">

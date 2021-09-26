@@ -50,3 +50,43 @@
   background-size: cover;
   background-position: center 50%;
 }
+
+a {
+text-decoration:none;
+}
+
+a:hover {
+font-weight:bold;
+text-decoration:underline;
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: black;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+}
+
+body {
+  padding-top: 50px;
+  padding-bottom: 220px;
+
+}
+
+.fixed_left {
+  position: sticky;
+}
