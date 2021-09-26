@@ -31,16 +31,19 @@
       <%= @user.introduction %>
       </div>
 
-      <div class="btn btn-primary btn-sm">
-        <% if @user.id == current_user.id %>
+       <% if @user.id == current_user.id %>
         <% else %>
           <% if current_user.following?(@user) %>
-          <%= link_to "フォローを外す", user_relationships_path(@user.id), method: :delete %>
+          <div class="btn btn-danger btn-sm">
+            <%= link_to "フォローを外す", user_relationships_path(@user.id), method: :delete %>
+           </div>
           <% else %>
+           <div class="btn btn-primary btn-sm">
             <%= link_to "フォローする", user_relationships_path(@user.id), method: :post %>
+           </div>
           <% end %>
         <%end %>
-      </div>
+
       <br />
 
       <div>
