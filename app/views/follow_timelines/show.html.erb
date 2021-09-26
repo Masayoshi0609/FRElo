@@ -1,2 +1,18 @@
-<h1>FollowTimelines#show</h1>
-<p>Find me in app/views/follow_timelines/show.html.erb</p>
+<body>
+ <main class="mb-auto">
+  <div class="container">
+   <div class="row">
+
+    <div class="col-md-3">
+      <%= render "users/user_info", user: @user %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <%= render "posts/timeline", user: @user %>
+    </div>
+    
+   </div>
+  </div>
+ </main>
+
+</body>
