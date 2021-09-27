@@ -17,7 +17,9 @@
     <header class="shadow-sm fixed-top bg-light">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand p-3" href="/">FRElo</a>
+          <a class="navbar-brand p-0 my-0" href="/">
+            <%= image_tag asset_path("logo.png"), size: '150x50' %>
+          </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -67,6 +69,7 @@
         <div class="row no-gutters">
           <div class="col-md-4">
             <p>一緒に健康を楽しむ「バディ」が見つかるSNS</p>
+            <div class="small">Logo created by <a href="https://www.designevo.com/" title="Free Online Logo Maker">DesignEvo logo maker</a></div>
           </div>
           <div class="col-md-8">
             <h6><%= link_to 'トップページ', root_path, class: 'nav-link text-white' %></h6>
