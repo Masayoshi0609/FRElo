@@ -1,110 +1,127 @@
-<p>ユーザー編集画面</p>
+<body>
+ <main class="mb-auto">
+  <div class="container">
+   <div class="row">
+    <div class="col-md-3">
+     <%= render "users/user_info", user: current_user %>
+    </div>
 
-<div>
-<% if @user.image.attached? %>
-  <%= image_tag @user.image.variant(resize: '200x200' )  %>
-<% end %>
-</div>
+    <div class="col-md-8 offset-md-1 bg-light text-center">
+      <p>ユーザー編集画面</p>
 
-<div>
-<%= @user.name %>
-</div>
-<div>
-  <%= @user.body_type.name %>
-</div>
-<div>
-<%= @user.introduction %>
-</div>
+      <div>
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image.variant(resize: '200x200' )  %>
+      <% end %>
+      </div>
 
-<%= link_to "自分のタイムラインに移動", mypage_path %>
+      <div>
+      <%= @user.name %>
+      </div>
+      <div>
+        <%= @user.body_type.name %>
+      </div>
+      <div>
+      <%= @user.introduction %>
+      </div>
 
-
-<%= form_with model: @user, local:true do |f| %>
-
-  <!--この記述はdevise由来なので、正しいものに書き換えるようにする。-->
-  <%#= render "devise/shared/error_messages", resource: resource %>
+      <%= link_to "自分のタイムラインに移動", mypage_path %>
 
 
-  <div class="field">
-    ニックネーム<br />
-    <%= f.text_field :name, autofocus: true %>
+      <%= form_with model: @user, local:true do |f| %>
+
+        <!--この記述はdevise由来なので、正しいものに書き換えるようにする。-->
+        <%#= render "devise/shared/error_messages", resource: resource %>
+
+
+        <div class="field">
+          ニックネーム<br />
+          <%= f.text_field :name, autofocus: true %>
+        </div>
+
+        <div class="field">
+          メールアドレス<br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <!--パスワード欄は、テスト効率およびユーザーの安全性の観点から一旦非表示。-->
+        <!--変更する場合は、別途の処理を設けるなどしたほうがセキュリティは安全そう。-->
+        <!--<div class="field">-->
+        <!--  パスワード-->
+          <%# if @minimum_password_length %>
+          <!--<em>(<%#= @minimum_password_length %> 文字以上で入力してください)</em>-->
+          <!--<%# end %><br />-->
+          <%#= f.password_field :password, autocomplete: "new-password" %>
+        <!--</div>-->
+
+        <!--<div class="field">-->
+        <!--  パスワード（再確認）<br />-->
+          <%#= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <!--</div>-->
+
+        <div class="field">
+          電話番号<br />
+          <%= f.number_field :telephone_number, autofocus: true %>
+        </div>
+
+        <br />
+
+        <h4>次の項目は、オープンにしても良い内容を入力してください。</h4>
+
+         <div class="field">
+          自己紹介<br />
+          <%= f.text_area :introduction, autofocus: true %>
+        </div>
+
+        <div class="field">
+          居住エリア<br />
+          <%= f.text_field :living_area, autofocus: true %></input>
+        </div>
+
+        <div class="field">
+          身長(cm)<br />
+          <%= f.number_field :height, autofocus: true %>
+        </div>
+
+        <div class="field">
+          体重(kg)<br />
+          <%= f.number_field :weight, autofocus: true %>
+        </div>
+
+        <div class="field">
+          年齢<br />
+          <%= f.number_field :age, autofocus: true %>
+        </div>
+
+        <!--options_for_selectは配列を求めるので、exercise_frequenciesが複数形にする必要がある-->
+        <div class="field">
+          運動頻度<br />
+          <%= f.select :exercise_frequency, options_for_select(User.exercise_frequencies.keys) %>
+        </div>
+
+        <div class="field">
+          体脂肪率(%)小数点は切捨て入力してください。<br />
+          <%= f.number_field :fat_percentage, autofocus: true %>
+        </div>
+
+        <div class="field">
+          属性タイプ<br />
+          <%= f.select :body_type_id, BodyType.all.map { |body_type| [body_type.name, body_type.id] } %>
+        </div>
+
+        <div class="field">
+          プロフィール画像<br />
+          <%= f.file_field :image %>
+        </div>
+
+        <div>
+          <br />
+          <%= f.submit '変更を保存する', class: "btn btn-success" %>
+        </div
+      <% end %>
+    </div>
+
+   </div>
   </div>
-
-  <div class="field">
-    メールアドレス<br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <!--パスワード欄は、テスト効率およびユーザーの安全性の観点から一旦非表示。-->
-  <!--変更する場合は、別途の処理を設けるなどしたほうがセキュリティは安全そう。-->
-  <!--<div class="field">-->
-  <!--  パスワード-->
-    <%# if @minimum_password_length %>
-    <!--<em>(<%#= @minimum_password_length %> 文字以上で入力してください)</em>-->
-    <!--<%# end %><br />-->
-    <%#= f.password_field :password, autocomplete: "new-password" %>
-  <!--</div>-->
-
-  <!--<div class="field">-->
-  <!--  パスワード（再確認）<br />-->
-    <%#= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  <!--</div>-->
-
-  <div class="field">
-    電話番号<br />
-    <%= f.number_field :telephone_number, autofocus: true %>
-  </div>
-
-  <br />
-
-  <h4>次の項目は、オープンにしても良い内容を入力してください。</h4>
-
-   <div class="field">
-    自己紹介<br />
-    <%= f.text_area :introduction, autofocus: true %>
-  </div>
-
-  <div class="field">
-    居住エリア<br />
-    <%= f.text_field :living_area, autofocus: true %>
-  </div>
-
-  <div class="field">
-    身長(cm)<br />
-    <%= f.number_field :height, autofocus: true %>
-  </div>
-
-  <div class="field">
-    体重(kg)<br />
-    <%= f.number_field :weight, autofocus: true %>
-  </div>
-
-  <div class="field">
-    年齢<br />
-    <%= f.number_field :age, autofocus: true %>
-  </div>
-
-  <!--options_for_selectは配列を求めるので、exercise_frequenciesが複数形にする必要がある-->
-  <div class="field">
-    運動頻度<br />
-    <%= f.select :exercise_frequency, options_for_select(User.exercise_frequencies.keys) %>
-  </div>
-
-  <div class="field">
-    体脂肪率(%)小数点は切捨て入力してください。<br />
-    <%= f.number_field :fat_percentage, autofocus: true %>
-  </div>
-
-  <div class="field">
-    属性タイプ<br />
-    <%= f.select :body_type_id, BodyType.all.map { |body_type| [body_type.name, body_type.id] } %>
-  </div>
-
-
-
-
-  <%= f.file_field :image %>
-
-  <%= f.submit '変更を保存する', class: "btn btn-success" %>
-
-<% end %>
+ </main>
+</body>

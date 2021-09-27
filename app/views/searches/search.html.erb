@@ -1,58 +1,60 @@
 <main>
   <div class="container">
     <div class="row">
-      <div class="col-md-8 offset-md-1">
+      <div class="col-md-3">
+       <%= render "users/user_info", user: current_user %>
+      </div>
 
+      <div class="col-md-8 offset-md-1">
         <table class="table table-hover table-inverse">
 
           <% if @range == "2" %>
-            <h3>"<%= @word %>"に関するつぶやき</h3>
+            <h3 class="mt-4">"<%= @word %>"に関するつぶやき</h3>
             <thead>
-            <tr>
-            <th></th>
-            <th>つぶやきの内容</th>
-            <th colspan="3"></th>
-            </tr>
+
             </thead>
 
             <tbody>
               <% @post.each do |post| %>
             <tr>
-            <td>
-              <%= link_to(post.user) do %>
-                <% if post.user.image.attached? %>
-                  <%= image_tag post.user.image.variant(resize: '100x100' )  %>
+              <td>
+                <%= link_to(post.user) do %>
+                  <% if post.user.image.attached? %>
+                    <%= image_tag post.user.image.variant(gravity: :center, resize: "50x50^", crop: "50x50+0+0"), class: "rounded-circle mx-auto" %>
+                  <% end %>
+                  <%= post.user.name %>
                 <% end %>
-                <%= post.user.name %>
+              </td>
+
+            <td>
+              <%= link_to post_path(post) do %>
+                <%= post.body %>
               <% end %>
             </td>
-
-            <td><%= post.body %></td>
             </tr>
             <% end %>
 
             </tbody>
 
           <% else %>
-            <h3>Users serch for"<%= @word %>"</h3>
+            <h3 class="mt-4">"<%= @word %>"の検索結果</h3>
             <thead>
-            <tr>
-            <th>image</th>
-            <th>name</th>
-            <th colspan="3"></th>
-            </tr>
+
             </thead>
 
           <tbody>
             <% @user.each do |user| %>
-            <tr>
-            <td>
-              <% if user.image.attached? %>
-                <%= image_tag user.image.variant(resize: '100x100' )  %>
-              <% end %>
-            </td>
-            <td><%= user.name%></td>
-            <td><%= link_to "ユーザーページ", user, class: "user_#{user.id}" %></td>
+            <tr class="text-center">
+              <td>
+                <% if user.image.attached? %>
+                  <%= image_tag user.image.variant(gravity: :center, resize: "50x50^", crop: "50x50+0+0"), class: "rounded-circle mx-auto" %>
+                <% end %>
+              </td>
+              <td><%= user.name%></td>
+              <td><%= link_to user_path(user) do %>
+                <i class="fas fa-external-link-alt"></i>ユーザーページ
+                <% end %>
+              </td>
             </tr>
             <% end %>
           </tbody>

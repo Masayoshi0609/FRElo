@@ -3,7 +3,7 @@
   <div class="container">
    <div class="row">
     <div class="col-md-3">
-     <%= render "users/user_info", user: @user %>
+     <%= render "users/user_info", user: current_user %>
 
     </div>
 
@@ -24,9 +24,7 @@
       <div>
       <%= @user.name %>
       </div>
-      <div>
-        <%= @user.body_type.name %>
-      </div>
+
       <div>
       <%= @user.introduction %>
       </div>
@@ -47,35 +45,37 @@
       <br />
 
       <div>
-      属性タイプ：  <%= @user.body_type.name %>
+       属性タイプ：  <%= @user.body_type.name %>
       </div>
 
       <div>
-      年齢：        <%= @user.age %>
+       年齢：        <%= @user.age %>
       </div>
 
       <div>
-      身長：        <%= @user.height %>
+       身長：        <%= @user.height %>
       </div>
 
       <div>
-      体重：        <%= @user.weight %>
+       体重：        <%= @user.weight %>
       </div>
 
       <div>
-      体脂肪率：    <%= @user.fat_percentage %>
+       体脂肪率：    <%= @user.fat_percentage %>
       </div>
 
       <div>
-      運動頻度：    <%= @user.exercise_frequency %>
+       運動頻度：    <%= @user.exercise_frequency %>
       </div>
 
       <div>
-      居住エリア：  <%= @user.living_area %>
+       居住エリア：  <%= @user.living_area %>
       </div>
 
       <% if @user.id == current_user.id %>
-      <%= link_to "プロフィール編集", edit_user_path(@user.id) %>
+       <%= link_to edit_user_path(@user.id), class: "btn btn-sm btn-secondary" do %>
+        <i class="fas fa-users-cog"></i>プロフィール編集
+       <% end %>
       <% end %>
 
 

@@ -1,6 +1,6 @@
 
 <table class="table">
- <tbody>
+ <tbody class="text-center">
  	<tr></tr>
  	<tr>
  		<th>
@@ -12,28 +12,29 @@
  	<tr>
  		<th><%= image_tag user.body_type.image.variant(gravity: :center, resize: "20x20^", crop: "20x20+0+0") %><%= user.name  %></th>
 
-  <!--<%# if user.introduction.present? %>-->
- 	<!--<tr>-->
- 	<!-- 	<th><%#= user.introduction %></th>-->
- 	<!--</tr>-->
- 	<!--<%# else %>-->
- 	<!--<%# end %>-->
-
  	<!--フォロー機能箇所-->
  	<tr>
- 		<th>フォロー</th>
- 		<th><%= link_to user_followings_path(user) do %>
- 			<%= user.followings.count %>
- 			<% end %></th>
+ 		<th class=""><i class="fas fa-arrow-alt-circle-right"></i>
+  		<%= link_to user_followings_path(user) do %> フォロー (<%= user.followings.count %>)
+  		<% end %>
+ 		</th>
+  </tr>
+
+  <tr>
+ 		<th class=""><i class="fas fa-arrow-alt-circle-right"></i>
+  		<%= link_to user_followers_path(user) do %> フォロワー (<%= user.followers.count %>)
+  		<% end %>
+ 		</th>
+  </tr>
+
+ 	<tr>
+ 		<th><i class="fas fa-user"></i><%= link_to " プロフィール", user_path(user) %></th>
  	</tr>
  	<tr>
- 		<th>フォロワー</th>
- 		<th><%= link_to user_followers_path(user) do %>
- 			<%= user.followers.count %></th>
- 			<% end %>
+ 		<th><i class="fas fa-users"></i><%= link_to " フォローTL", user_follow_timelines_path(user) %></th>
  	</tr>
  	<tr>
- 		<th><%= link_to "プロフィール", user_path(current_user.id) %></th>
+ 		<th><i class="fas fa-house-user"></i><%= link_to " ホームTL", mypage_path %></th>
  	</tr>
  </tbody>
 </table>
