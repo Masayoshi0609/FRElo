@@ -1,28 +1,31 @@
+<table class="text-break">
+ <tbody>
  <% comments.each do |post_comment| %>
  <tr>
   <td>
    <%= link_to user_path(post_comment.user.id) do %>
     <% if post_comment.user.image.attached? %>
-      <%= image_tag post_comment.user.image.variant(resize: '100x100' )  %>
+      <%= image_tag post_comment.user.image.variant(gravity: :center, resize: "50x50^", crop: "50x50+0+0"), class: "rounded-circle" %>
     <% end %>
- 	 <% end %>
- 	 <p>
- 	 <%= link_to user_path(post_comment.user.id) do %>
- 	 <%= post_comment.user.name %>
+ 	  <p class="text-nowrap"><%= post_comment.user.name %></p>
    <% end %>
   </td>
 
-  <td>
+  <td class="text-left">
   	 <%= post_comment.body %>
   </td>
-  <td>
+  <td class="text-right">
   	 <% if post_comment.user == current_user %>
-  	  <%= link_to "Destroy", post_comment_path(@post_detail, post_comment), method: :delete, "data-confirm" => "Are you sure?", class: "btn btn-sm btn-danger", remote: true %>
+  	  <%= link_to post_comment_path(@post_detail, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "btn btn-sm btn-danger", remote: true do %>
+  	   <i class="fas fa-trash-alt"></i>
+  	  <% end %>
   	 <% end %>
   </td>
 
   </tr>
    <% end %>
+ </tbody>
+</table>
 
 
 

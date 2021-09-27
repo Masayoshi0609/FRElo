@@ -1,45 +1,71 @@
-<h2>つぶやきの詳細</h2>
+<body>
+ <main class="mb-auto">
+  <div class="container">
+   <div class="row">
+    <div class="col-md-3">
+     <%= render "users/user_info", user: current_user %>
+    </div>
 
-  <%= @post.body  %>
+    <div class="col-md-8 offset-md-1 bg-light text-center">
 
-　<% if @post.image.attached? %>
-  <%= image_tag @post.image %>
-  <% end %>
+      <h5 class="mt-4">
+        <% if @post.user.image.attached? %>
+          <%= image_tag @post.user.image.variant(gravity: :center, resize: "50x50^", crop: "50x50+0+0"), class: "rounded-circle mx-auto" %>
+        <% end %>
 
-  <br>
-  <p>タグ：</p>
-  <% @post_tags.each do |tag|  %>
-    <%= link_to tag_posts_path(tag_id: tag.id) do %>
-      <%= tag.tag_name %>
-      (<%= tag.posts.count %>)
-    <% end %>
-  <% end %>
+        <%= @post.user.name%>のつぶやき
+      </h5>
+
+      <div class="border border-secondary rounded p-2 my-2">
+        <strong><%= @post.body  %></strong>
+
+      　<% if @post.image.attached? %>
+          <%= image_tag @post.image %>
+        <% end %>
+
+        <br />
+        <p><i class="fas fa-tags"></i>タグ:
+          <% @post_tags.each do |tag|  %>
+            <%= link_to tag_posts_path(tag_id: tag.id) do %>
+              <%= tag.tag_name %>
+              (<%= tag.posts.count %>)
+            <% end %>
+          <% end %>
+        </p>
+
+        <div id="likes_buttons_<%= @post.id %>">
+          <%= render partial: "likes/like", locals: { post: @post } %>
+        </div>
+
+      </div>
+
+        <div>
+          コメント数:<%= @post.comments.count %>
+        </div>
+
+        <!--ここからコメント一覧の記述-->
+        <div id="comments_<%= @post.id %>">
+          <%= render "comments/comments", comments: @post.comments %>
+        </div>
+
+        <!--ここからコメント投稿の記述-->
+        <div>
+          <%= render "comments/form", post: @post, comment: @comment %>
+        </div>
+
+        <div class="text-right">
+
+          <% if @post.user == current_user %>
+            <i class="fas fa-trash-alt text-danger"></i>
+        	  <%= link_to "つぶやきを削除", post_path(@post.id), method: :delete, "data-confirm" => "本当につぶやきを削除しますか?", class: "btn btn-sm btn-danger" %>
+        	<% end %>
+        </div>
+
+        <br />
+        	<%= link_to "マイページに戻る", mypage_path, class: "btn btn-sm btn-success" %>
 
 
-  <div id="likes_buttons_<%= @post.id %>">
-    <%= render partial: "likes/like", locals: { post: @post } %>
-  </div>
-
-
-
-  <div>
-  コメント数:<%= @post.comments.count %>
-  </div>
-
-  <!--ここからコメント一覧の記述-->
-  <div id="comments_<%= @post.id %>">
-    <%= render "comments/comments", comments: @post.comments %>
-  </div>
-
-  <!--ここからコメント投稿の記述-->
-  <div>
-    <%= render "comments/form", post: @post, comment: @comment %>
-  </div>
-
-
-  <% if @post.user == current_user %>
-	  <%= link_to "Destroy", post_path(@post.id), method: :delete, "data-confirm" => "Are you sure?", class: "btn btn-sm btn-danger" %>
-	<% end %>
-
-  <br />
-	<%= link_to "マイページに戻る", mypage_path, class: "btn btn-sm btn-success" %>
+	 </div>
+	</div>
+ </main>
+</body>

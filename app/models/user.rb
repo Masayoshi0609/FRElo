@@ -41,7 +41,7 @@ class User < ApplicationRecord
   def following?(user)
    followings.include?(user)
   end
-  
+
   #検索機能に関する記述
 
   def self.search(search, word)

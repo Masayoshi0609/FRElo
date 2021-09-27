@@ -2,48 +2,56 @@
  <main class="mb-auto">
   <div class="container-fluid">
  	 <div class="row">
-		<div class="col no-gutters">
-	   <h2>Follower Users</h2>
+		<div class="col-md-3">
+     <%= render "users/user_info", user: current_user %>
+    </div>
+
+    <div class="col-md-8 offset-md-1 bg-light text-center">
+	   <h3 class="mt-4">フォローされているユーザー</h3>
 
 	    <% if @users.exists? %>
 	     <table class="table table-hover table-inverse">
 	      <thead>
 	       <tr>
-	        <th>image</th>
-	        <th>name</th>
-	        <th colspan="3"></th>
 	       </tr>
         </thead>
 
 	      <tbody>
 		     <% @users.each do |user| %>
+
 					<tr>
 						<td>
-						<%#= attachment_image_tag user, :profile_image, size: "40x40", format: "jpeg", fallback: "no_image.jpg" %>
+						<%= link_to user_path(user) do %>
+							<%= image_tag user.image.variant(gravity: :center, resize: "50x50^", crop: "50x50+0+0"), class: "rounded-circle mx-auto" %>
+						<% end %>
 						</td>
 				    <td>
+				    <%= link_to user_path(user) do %>
 				  	  <%= user.name %>
+				  	<% end %>
 						</td>
 
 						<td>
-							フォロー数: <%= user.followings.count %>
+							フォロー: <%= user.followings.count %>
 						</td>
 
 						<td>
-							フォロワー数: <%= user.followers.count %>
+							フォロワー: <%= user.followers.count %>
 						</td>
 
 						<td>
-				  		<%= link_to user_path(user.id) do %>
-					    Show
-					    <% end %>
-					  </td>
+						<% if current_user.following?(user) %>
+							<p class="text-info"><i class="far fa-handshake"></i><strong>Myバディ</strong></p>
+						<% else %>
+						<% end %>
+						</td>
 					</tr>
+
 					<% end %>
 				</tbody>
 			 </table>
 			<% else %>
-			<p>ユーザーはいません</p>
+				<p>ユーザーはいません</p>
 			<% end %>
 		 </div>
 		</div>
