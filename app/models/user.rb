@@ -58,6 +58,10 @@ class User < ApplicationRecord
    end
   end
 
+  # 退会機能に関する記述
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 
 
   #ActiveStorage使用のための記述だが、エラーが出るため一旦コメントアウトしておく。

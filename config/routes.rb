@@ -36,8 +36,8 @@ Rails.application.routes.draw do
     get "posts", to: "posts#search"
   end
 
-  get 'users/:id/confirm' => "users#confirm"
-  get 'users/:id/quit' => "users#quit"
+  get 'user_confirm' => "users#confirm"
+  patch 'user_quit' => "users#quit"
 
   get "search" => "searches#search"
 

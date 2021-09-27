@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @body_type = @user.body_type
-    
+
   end
 
   def edit
@@ -12,11 +12,6 @@ class UsersController < ApplicationController
     else
       redirect_to user_path(@user.id)
     end
-  end
-
-  def create
-
-
   end
 
 
@@ -31,9 +26,15 @@ class UsersController < ApplicationController
   end
 
   def confirm
+    @user = current_user
+    @body_type = current_user.body_type
   end
 
   def quit
+    user = current_user
+    user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
 

@@ -78,8 +78,11 @@
        <% end %>
       <% end %>
 
-
-
+      <% if @user.id == current_user.id %>
+       <%= link_to user_confirm_path, class: "btn btn-sm btn-danger" do %>
+        <i class="fas fa-user-slash"></i>退会する
+       <% end %>
+      <% end %>
 
 
     </div>

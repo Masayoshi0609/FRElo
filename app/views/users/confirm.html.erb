@@ -1,2 +1,24 @@
-<h1>Users#confirm</h1>
-<p>Find me in app/views/users/confirm.html.erb</p>
+<div class="container-fluid confirm d-flex align-items-center justify-content-center">
+  <div class="row text-left">
+    <div class="col-12">
+        <h1><strong>FREloを本当に退会しますか？</strong></h1>
+        <p>登録内容を更新すると、新しいバディに出会えるかもしれません。</p>
+
+        <h5>あなたの属性は<strong><%= @body_type.name %></strong>です</h5>
+        <div class="col-8">
+
+             <p class="mb-0">あなたのイメージと異なりましたか？</p>
+            <strong><%= link_to "→属性一覧を確認して、選び直してみる", body_type_path %></strong>
+        </div>
+        <br />
+        <h4><strong><%= link_to "もう一度FREloを使ってみる(利用継続)", mypage_path %></strong></h4>
+
+        <div>
+            <br />
+            <p class="mb-0">退会をする場合は、以下のリンクを押してください。</p>
+            <p class="small mt-0">ボタンを押すと退会が完了し、トップに戻ります。この操作は取り消すことができません。</p>
+              <%= link_to "退会する", user_quit_path, "data-confirm" => "本当に退会してよろしいですか？", :method => :patch, class: "btn btn-sm btn-danger" %>
+        </div>
+    </div>
+  </div>
+</div>

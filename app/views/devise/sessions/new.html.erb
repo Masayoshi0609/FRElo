@@ -4,6 +4,9 @@
 
       <h2>ログイン</h2>
       <h4>おかえりなさい！</h4>
+      <% flash.each do |key, value| %>
+        <p><%= value %><p>
+      <% end %>
 
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
         <div class="field">
