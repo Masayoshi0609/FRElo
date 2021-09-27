@@ -7,20 +7,26 @@
     <% if post_comment.user.image.attached? %>
       <%= image_tag post_comment.user.image.variant(gravity: :center, resize: "50x50^", crop: "50x50+0+0"), class: "rounded-circle" %>
     <% end %>
- 	  <p class="text-nowrap"><%= post_comment.user.name %></p>
+ 	  <p class="text-nowrap small"><%= post_comment.user.name %></p>
    <% end %>
   </td>
 
   <td class="text-left">
   	 <%= post_comment.body %>
   </td>
-  <td class="text-right">
+
+  <td>
+   <p class="small"><%= post_comment.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+  </td>
+
+  <td class="text-right small">
   	 <% if post_comment.user == current_user %>
   	  <%= link_to post_comment_path(@post_detail, post_comment), method: :delete, "data-confirm" => "コメントを削除しますか？", class: "btn btn-sm btn-danger", remote: true do %>
   	   <i class="fas fa-trash-alt"></i>
   	  <% end %>
   	 <% end %>
   </td>
+
 
   </tr>
    <% end %>

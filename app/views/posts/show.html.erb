@@ -17,14 +17,14 @@
       </h5>
 
       <div class="border border-secondary rounded p-2 my-2">
-        <strong><%= @post.body  %></strong>
+        <h5><strong><%= @post.body  %></strong></h5>
 
       　<% if @post.image.attached? %>
-          <%= image_tag @post.image %>
+          <%= image_tag @post.image.variant(gravity: :center, resize: "200x200"), class: "mx-auto" %>
         <% end %>
 
         <br />
-        <p><i class="fas fa-tags"></i>タグ:
+        <p class="small"><i class="fas fa-tags"></i>タグ:
           <% @post_tags.each do |tag|  %>
             <%= link_to tag_posts_path(tag_id: tag.id) do %>
               <%= tag.tag_name %>
@@ -32,11 +32,11 @@
             <% end %>
           <% end %>
         </p>
-
+        <!--いいね機能の記述-->
         <div id="likes_buttons_<%= @post.id %>">
           <%= render partial: "likes/like", locals: { post: @post } %>
         </div>
-
+        <p class="small text-right"><%= @post.created_at.strftime("%Y-%m-%d %H:%M") %></p>
       </div>
 
         <div>

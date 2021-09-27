@@ -1,9 +1,9 @@
 <% if post.liked_by?(current_user) %> <!-- ログインしているユーザーがいいねしたかどうかで分岐 -->
     <%=link_to post_likes_path(post), method: :delete, remote: true do %></p>
-      <strong><label class="text-danger mt-0">♥<%= post.likes.count %></label></strong>
+      <strong><label class="text-danger mt-0">いいね♥<%= post.likes.count %></label></strong>
     <% end %>
 <% else %>
     <%=link_to post_likes_path(post), method: :post, remote: true do %></p>
-      <strong><label class="mt-0">♡<%= post.likes.count %></label></strong>
+      <strong><label class="mt-0">いいね♡<%= post.likes.count %></label></strong>
     <% end %>
 <% end %>
