@@ -48,6 +48,7 @@ type7 =BodyType.create!(
 )
 type7.image.attach(io: File.open(Rails.root.join('app/assets/images/orange.png')), filename: 'orange.png')
 
+
 User.create!(
   name: "test1",
   email: "test@email",

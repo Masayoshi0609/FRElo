@@ -49,10 +49,6 @@ class HomesController < ApplicationController
       user.update( body_type_id: "4" )
       redirect_to welcome_path
 
-    elsif @BMI <= 25 && fat <= 24
-      user.update( body_type_id: "5" )
-      redirect_to welcome_path
-
     elsif @BMI <= 34
       user.update( body_type_id: "6" )
       redirect_to welcome_path
@@ -60,8 +56,11 @@ class HomesController < ApplicationController
     elsif @BMI >= 35
       user.update( body_type_id: "7" )
       redirect_to welcome_path
-    end
 
+    else
+      user.update( body_type_id: "5" )
+      redirect_to welcome_path
+    end
   end
 
 private
