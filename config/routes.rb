@@ -39,6 +39,9 @@ Rails.application.routes.draw do
   get 'user_confirm' => "users#confirm"
   patch 'user_quit' => "users#quit"
 
+  get "privacy_policy" => "homes#privacy"
+  get "kiyaku" => "homes#kiyaku"
+
   get "search" => "searches#search"
 
 end

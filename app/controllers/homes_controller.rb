@@ -63,6 +63,12 @@ class HomesController < ApplicationController
     end
   end
 
+  def privacy
+  end
+
+  def kiyaku
+  end
+
 private
 
   def user_params

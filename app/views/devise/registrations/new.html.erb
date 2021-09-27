@@ -1,25 +1,26 @@
-<div class="container-fluid registration d-flex align-items-center justify-content-center">
+<body>
+<div class="container-fluid registration align-items-center justify-content-center">
   <div class="row text-center">
     <div class="col">
 
-      <h2>FREloの登録はとってもカンタンです！</h2>
-      <h4>まずは下記の項目を入力していきましょう。</h4>
-      
+      <h2 class=""><strong>FREloの登録はとってもカンタンです！</strong></h3>
+      <h4><strong>まずは下記の項目を入力していきましょう。</strong></h4>
+
       <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
-      
+
         <%= render "devise/shared/error_messages", resource: resource %>
-      
-      
+
+
         <div class="field">
           ニックネーム<br />
           <%= f.text_field :name, autofocus: true %>
         </div>
-      
+
         <div class="field">
           メールアドレス<br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
-      
+
         <div class="field">
           パスワード
           <% if @minimum_password_length %>
@@ -27,65 +28,70 @@
           <% end %><br />
           <%= f.password_field :password, autocomplete: "new-password" %>
         </div>
-      
+
         <div class="field">
           パスワード（再確認）<br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
-      
+
         <div class="field">
           電話番号<br />
           <%= f.number_field :telephone_number, autofocus: true %>
         </div>
-      
+
         <br />
-      
-        <h4>次の項目は、オープンにしても良い内容を入力してください。</h4>
-      
-        <div class="field">
-          居住エリア<br />
-          <%= f.text_field :living_area, autofocus: true %>
-        </div>
-      
+
+        <h5><strong>次の項目は、オープンにしても良い内容を入力してください。<strong></h5>
+
         <div class="field">
           身長(cm)<br />
           <%= f.number_field :height, autofocus: true %>
         </div>
-      
+
         <div class="field">
           体重(kg)<br />
           <%= f.number_field :weight, autofocus: true %>
         </div>
-      
+
         <div class="field">
           年齢<br />
           <%= f.number_field :age, autofocus: true %>
         </div>
-      
+
         <!--options_for_selectは配列を求めるので、exercise_frequenciesが複数形にする必要がある-->
         <div class="field">
           運動頻度<br />
           <%= f.select :exercise_frequency, options_for_select(User.exercise_frequencies.keys) %>
         </div>
-      
+
         <div class="field">
           体脂肪率(%)小数点は切捨て入力してください。<br />
           <%= f.number_field :fat_percentage, autofocus: true %>
         </div>
-      
+
         <br />
-      
-        <h4>使い方のヒント：恥ずかしがらずに、思い切って全ての項目を埋めてみましょう！<br />
-        項目を埋めるほど、あなたにあった「属性タイプ」が表示され、<br />
-        他のユーザーと気軽に、楽しく交流ができるようになります！</h4>
-      
+
+        <p class="small">使い方のヒント：項目を埋めるほど、あなたに合った「属性タイプ」が表示され、楽しく利用ができます！</p>
+
+        <div>
+          <p>当社の<strong>「利用規約」</strong>および<strong>「プライバシーポリシー」</strong>をご覧下さい。
+          <br>ご登録の際は、上記の内容に全て同意したとみなします。
+          <br><span class="small">下記の文字を押すと、それぞれのページが別タブで開きます。</span>
+          <p>
+            <strong><%= link_to '利用規約', kiyaku_path, :target=>["_blank"] %></strong>
+            <br>
+            <strong><%= link_to 'プライバシーポリシー', privacy_policy_path, :target=>["_blank"]  %></strong>
+          </p>
+        </div>
+
         <div class="actions">
           <%= f.submit "登録する" %>
         </div>
       <% end %>
-      
+
       <%= render "devise/shared/links" %>
-      
+
     </div>
   </div>
 </div>
+</body>

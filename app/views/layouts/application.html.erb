@@ -61,24 +61,24 @@
       </nav>
     </header>
 
-    <main class="pb-500">
+    <main>
     <%= yield %>
     </main>
-    <footer class="bg-dark text-white pt-5 pb-4 fixed-bottom">
+    <footer class="bg-dark text-white pt-3 pb-1 fixed-bottom">
       <div class="container">
         <div class="row no-gutters">
-          <div class="col-md-4">
+          <div class="col-8">
             <p>一緒に健康を楽しむ「バディ」が見つかるSNS</p>
             <div class="small">Logo created by <a href="https://www.designevo.com/" title="Free Online Logo Maker">DesignEvo logo maker</a></div>
           </div>
-          <div class="col-md-8">
-            <h6><%= link_to 'トップページ', root_path, class: 'nav-link text-white' %></h6>
+          <div class="col-4">
+            <%= link_to 'トップページ', root_path, class: 'nav-link text-white' %>
             <ul class="p-0 list-unstyled">
               <li>
-                <a href="" title="About" class="text-white-50">会社概要</a>
+                <%= link_to '利用規約', kiyaku_path, class: 'nav-link text-white' %>
               </li>
               <li>
-                <a href="" title="License informations" class="text-white-50">プライバシーポリシー</a>
+                <%= link_to 'プライバシーポリシー', privacy_policy_path, class: 'nav-link text-white' %>
               </li>
             </ul>
           </div>

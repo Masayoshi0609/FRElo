@@ -84,8 +84,9 @@ a:link, a:visited, a:hover, a:active {
 }
 
 body {
+  min-height: 100vh;
   padding-top: 50px;
-  padding-bottom: 220px;
+  padding-bottom: 160px;
 }
 
 .confirm{
@@ -93,4 +94,90 @@ body {
   background-image: image-url("joging.png");
   background-size: cover;
   background-position: center 50%;
+}
+
+.Inner {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+}
+
+// 以下は利用規約用設定
+li{
+  list-style: none;
+}
+
+.Inner-Headline {
+  font-weight: bold;
+  font-size: 32px;
+}
+@media screen and (max-width: 480px) {
+  .Inner-Headline {
+    font-size: 24px;
+  }
+}
+.Inner-Text {
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  font-size: 15px;
+}
+.Inner-Text.first {
+  margin-top: 36px;
+}
+.Inner-Box {
+  margin-top: 16px;
+}
+.Inner-Box-Headline {
+  font-weight: bold;
+  font-size: 28px;
+}
+@media screen and (max-width: 480px) {
+  .Inner-Box-Headline {
+    font-size: 20px;
+  }
+}
+.Inner-Box-List {
+  margin: 20px 0 0 40px;
+}
+.Inner-Box-List-Item {
+  margin-top: 10px;
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  list-style-type: decimal;
+}
+.Inner-Box-List-Item-Ol {
+  margin: 20px 0 0 40px;
+}
+.Inner-Box-List-Item-Ol-Item {
+  margin-top: 10px;
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  list-style-type: decimal;
+}
+.Inner-Box-List-Item-Link {
+  text-decoration: underline;
+  display: inline-block;
+  color: red;
+}
+.Inner-Box-Contact {
+  margin-top: 36px;
+}
+.Inner-Box-Contact-Text {
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  font-size: 15px;
+}
+.Inner-Box-Contact-Text:nth-child(2) {
+  margin-top: 16px;
+}
+.Inner-Box-Item {
+  letter-spacing: 0.05em;
+  line-height: 1.8;
+  font-size: 15px;
+}
+@media screen and (max-width: 480px) {
+  .Inner-Box-Item {
+    letter-spacing: inherit;
+    font-size: 14px;
+  }
 }
