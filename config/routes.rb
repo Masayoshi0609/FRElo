@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    get 'mypage' => 'home_timelines#show'
+    get 'mypage' => 'follow_timelines#show'
   end
 
   resources :posts, only: [:create, :show, :destroy] do
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     resource :home_timelines, only: [:show]
     resource :hot_timelines, only: [:show]
     resource :buddy_timelines, only: [:show]
-    resource :follow_timelines, only: [:show]
+    # resource :follow_timelines, only: [:show]
     resources :bookmarks, only: [:index]
   end
 
