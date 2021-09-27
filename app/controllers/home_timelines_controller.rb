@@ -3,7 +3,7 @@ class HomeTimelinesController < ApplicationController
   def show
     @user = current_user
     @post = Post.new
-    @posts = Post.includes(:user).where(users:{body_type_id: current_user.body_type_id} ).reverse_order.page(params[:page]).per(3)
+    @posts = Post.includes(:user).where(users:{body_type_id: current_user.body_type_id} ).reverse_order.page(params[:page]).per(10)
     @tag_list = Tag.includes(:post_tags, :posts).order("posts.created_at DESC").page(params[:page]).per(7)
   end
 

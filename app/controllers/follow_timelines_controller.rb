@@ -2,7 +2,7 @@ class FollowTimelinesController < ApplicationController
   def show
     @user = current_user
     @post = Post.new
-    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).reverse_order.page(params[:page]).per(3)
+    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).reverse_order.page(params[:page]).per(10)
     @tag_list = Tag.includes(:post_tags).order("post_tags.updated_at").page(params[:page]).per(7)
   end
 

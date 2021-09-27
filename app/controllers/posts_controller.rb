@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   def create
     # @post = Post.new(post_params)
     # @post.user_id = current_user.id
-    @post = current_user.posts.new(post_params)        
+    @post = current_user.posts.new(post_params)
     tag_list = params[:post][:tag_name].split(nil)
     if @post.save
       @post.save_tag(tag_list)
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   def search
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
-    @posts = @tag.posts.all.reverse_order
+    @posts = @tag.posts.all.reverse_order.page(params[:page]).per(5)
   end
 
 

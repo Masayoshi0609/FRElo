@@ -7,10 +7,10 @@ class SearchesController < ApplicationController
   @word = params[:word]
 
    if @range == "1"
-    @user = User.search(search, word)
+    @user = User.search(search, word).reverse_order.page(params[:page]).per(10)
 
    else
-   	@post = Post.search(search, word)
+   	@post = Post.search(search, word).reverse_order.page(params[:page]).per(10)
 
    end
  end
