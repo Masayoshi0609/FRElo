@@ -39,7 +39,7 @@ FREloは「FRiEnds（仲間）を見つけるのはLow efforts（少ない努力
 - 他の人がどんなダイエットやトレーニングをしているのかな、と気になった時
 
 ## 設計書
-<...>
+https://docs.google.com/spreadsheets/d/1EuRMycYBp7f412fKPSuTcl1GHwasNpWElqz3NZ1NDnU/edit?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1hPpChiXfBDsqVkDlCJN86takyiZmQMjjuN2Agur6ERc/edit?usp=sharing
