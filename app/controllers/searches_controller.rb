@@ -9,9 +9,11 @@ class SearchesController < ApplicationController
    if @range == "1"
     @user = User.search(search, word).reverse_order.page(params[:page]).per(10)
 
-   else
+   elsif @range =="2"
    	@post = Post.search(search, word).reverse_order.page(params[:page]).per(10)
 
+   else
+    redirect_back(fallback_location: root_path)
    end
  end
 
