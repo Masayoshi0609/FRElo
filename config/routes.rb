@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   resources :posts, only: [:create, :show, :destroy] do
     resources :comments, only: [:create, :destroy]
     resource :likes, only: [:create, :destroy]
-    resource :bookmarks, only: [:create, :destroy]
   end
 
   resources :users, only: [:show, :edit, :update, :create] do
@@ -27,9 +26,7 @@ Rails.application.routes.draw do
     get "followers" => 'relationships#followers', as: "followers"
     resource :home_timelines, only: [:show]
     resource :hot_timelines, only: [:show]
-    resource :buddy_timelines, only: [:show]
-    # resource :follow_timelines, only: [:show]
-    resources :bookmarks, only: [:index]
+    resource :follow_timelines, only: [:show]
   end
 
   resources :tags, only: [:show, :create] do
