@@ -8,6 +8,11 @@ class User < ApplicationRecord
   # ActiveStorageを使用するための記述
   has_one_attached :image
 
+  #ActiveStorageの画像用バリデーション
+  validate :image_type
+
+
+
   belongs_to :body_type
   has_many :posts, dependent: :destroy
 
@@ -69,14 +74,13 @@ class User < ApplicationRecord
 
 private
 
-  #jpeg、もしくはpng以外の拡張子ファイルだとエラーで返すようにする
-  #image_typeに関する記述でエラーが出て進まないので、一旦コメントアウトする。
-  # def image_type
-  #   if !image.blob.content_type.in?(%('image/jpeg image/png'))
-  #     image.purge
-  #     errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
-  #   end
-  # end
+  # jpeg、もしくはpng以外の拡張子ファイルだとエラーで返すようにする
+  def image_type
+    if self.image.attached? && !image.blob.content_type.in?(%('image/jpeg image/png image/jpg'))
+      image.purge
+      errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
+    end
+  end
 
 
 end

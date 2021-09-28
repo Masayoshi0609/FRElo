@@ -10,15 +10,16 @@ class PostsController < ApplicationController
   end
 
   def create
-    # @post = Post.new(post_params)
-    # @post.user_id = current_user.id
     @post = current_user.posts.new(post_params)
+    @user = @post.user
+    @tag_list = Tag.includes(:post_tags).order("post_tags.updated_at").page(params[:page]).per(7)
+    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).reverse_order.page(params[:page]).per(10)
     tag_list = params[:post][:tag_name].split(nil)
     if @post.save
       @post.save_tag(tag_list)
       redirect_to mypage_path
     else
-      redirect_to mypage_path
+      render "follow_timelines/show"
     end
   end
 
@@ -41,6 +42,5 @@ private
   def post_params
     params.require(:post).permit(:body, :image)
   end
-
 
 end

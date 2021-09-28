@@ -1,12 +1,16 @@
-<h2 class="mt-4">つぶやきを投稿</h2>
 
-<%= form_with model: post, local:true do |f| %>
 
-  <div class="form-group">
+<h2 class="mt-4 text-left">つぶやきを投稿</h2>
+
+<%= form_with model: post, local: true do |f| %>
+ <%= render 'layouts/error_messages', model: f.object %>
+  <div class="form-group text-right">
   <%= f.text_area :body, class: "form-control" %>
+  <span class="small">投稿は120文字まで。JPG/PNG形式の画像を添付することもできます。</span>
   </div>
 
   <div class="form-group">
+
     <p class="small">"半角スペース"で区切ることで、複数のタグ付けができます。<br />
     例：スポーツ 秋 => 「スポーツ」「秋」のタグ付きで投稿</p>
     <%= f.text_field :tag_name, class: "form-control" %>
