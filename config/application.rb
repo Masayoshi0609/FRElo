@@ -10,6 +10,7 @@ module FRElo
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.paths.add 'lib', eager_load: true # API設定のlib/vision.rbを読み込む為に追加
 # Load ENV variables from credentials.yml file
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'credentials.yml')

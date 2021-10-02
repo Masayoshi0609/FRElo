@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "effective-balm-327809",
+  "private_key_id": "f4745aa366d363bfbb83ce81bcf1925fbeb8cce7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC18uQUnjo+mTuq\n9iLLmz3Ts54kRNncLulWlLo9p3FOJLM0r/moH+IMH1xQw5SiVGnEmk6zUtB2F4cs\n4YAANylqguoRJak7K0yG1Dxa5p4WtiIl4g/ToB94YS8i6OlgNYKQYAYyH+BP/3je\n8DWIff/IIGc3xsOZaieUjsbqVshNa4xGt8AqJZdN41hkRxJlePw22IgES3N2S30m\nwB77vepy7+rvLp7akxzYYWyUeDAG3kOMZByNy2fPqpWHGZovSiHTlWdYgRsYhXGt\nfJzT/HURO1QKrHnZqIgleV+bOSF6rrTDac7L8abYIPFP0ahPlrCZfkLFSOuOTQ/q\nvNWcImldAgMBAAECggEALAPcJRi54lbTVmJAvJyLcmErSn7VbSx0ChvkifGtuUer\nin1fmcpMtr4HaQpHNJXTGFpz23GXOFosuzC59FNj035j/U3tCIFK+/rvttW/PKNG\n039CcOF1e3uXGYzamAmZ0i9IkGuhqfiVVukpKiHA9LrR/W459yz08j0v5ZSk1AVd\nyXyZZDCOXUTXabAnTPqwZ5zLfFQKB+zn1hoLDSoIBebvtlVSfnZi/NcWsVnm0kUw\nZa8dYhpOj4RI1B0ILjRrqZC4h0+4phl/Df2+2hq4MTHZtsEDKTS8R7veG3eAHiub\noBufq50oY/xD8wVRUL0fz8vnC+VOyK4TB1zqN6/wwQKBgQDk/Zn+ryWynacF+R2R\n3UN29ulcKAOgsJN1SyYMMW2GWIKiAiwD3mT8OJAD5aLhPhgyETmmuW1dWebvdBjN\nG720MiMYGSyK18PN5X6hAo6HQbTkc3U3Kban00OAGz4bRk2vjO4Tc+eZSp1t0dbe\nn80GFM6ADPbKgwl1Zu5V8idU9QKBgQDLaNsNlhh+MBpmybpcLqfzVmRZ3L2IG4sE\nB+E7dkxNf35oQ3JEX8uKZuGYmeWMl/GnxDltgpopsRu19PBkAHPi7Nky7KbiH3VP\nDFjY6PJloBVjyxoJAWTJ/3gUaMyfnBTnszeww3hnYM6qGIWFOJS56HMQtwX3nDBU\nDpPsQuTByQKBgHjD8mop7sSzdjmlNt4Nhh4Ae/PZOoiNd0cdudQmYS/AECzm3lWv\n/SwznGghvHPz7ojBItl142KfHjbc0JOjdLnK001LQX1760z0IoNBuO9GTONKrN/J\nxQXfWjL+qxNxUVkrBwgFUXg7rKkVSK+iMVtqr7lCnQkScHOVNE7pZardAoGBALTw\nRBMU1hrBvWp7vYuscPezfLa29d2x6noebEsRkxRI+e/TNzz9HbiyhbDSDPCAZJUA\nprj0OSAnDGhSRtgd0vgkCZ0UB+sTYq17ZTkmFiEyQnSvwSwLklVhK7az9nlwRORK\ndpqFdoA3C/8gqvzzdNDepiRTOjqlNBRBl3HNm2GJAoGAXzKaWN+KnuI7DtIfJ0Gc\nRAPxSFFlEd37fNxRBEkGUNAkEp5WF7TT9pP7705EPaSvdVZjsdivtG31VFci94jj\nF0mElCMFBrL9Z0XS5MIxjx2bkpDuCehtHjsol7DFPEpF9T7MKns8y9gsJkURakK3\ninLiN4gFTbeTvOACywhoOnQ=\n-----END PRIVATE KEY-----\n",
+  "client_email": "frelo-193@effective-balm-327809.iam.gserviceaccount.com",
+  "client_id": "101922351387381722692",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/frelo-193%40effective-balm-327809.iam.gserviceaccount.com"
+}
