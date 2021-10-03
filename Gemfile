@@ -76,4 +76,5 @@ group :production do
 end
 gem 'kaminari'
 gem 'google-cloud-vision'
-gem 'google-protobuf', '~> 3.7.0.rc.2'
+gem 'google-protobuf'
+gem 'pry-rails'

@@ -4,6 +4,7 @@
 
 <%= form_with model: post, local: true do |f| %>
  <%= render 'layouts/error_messages', model: f.object %>
+ <span class="text-danger"><%= flash[:notice] %></span>
   <div class="form-group text-right">
   <%= f.text_area :body, class: "form-control" %>
   <span class="small">投稿は120文字まで。JPG/PNG形式の画像を添付することもできます。</span>

@@ -9,8 +9,9 @@ module Vision
       api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{ENV['GOOGLE_API_KEY']}"
 
       # 画像をbase64にエンコード
-      dir_tree =  image_file.key.scan(/.{1,#{2}}/)
-      base64_image = Base64.encode64(open("#{Rails.root}/public/uploads/#{dir_tree[0]}/#{dir_tree[1]}/#{image_file.key}").read)
+
+      # dir_tree =  image_file.key.scan(/.{1,#{2}}/)　この変数はS3を使った記述だと不要に思われる
+      base64_image = Base64.encode64(open(image_file.service_url).read)
 
       # APIリクエスト用のJSONパラメータ
       params = {
@@ -39,9 +40,14 @@ module Vision
       if (error = response_body['responses'][0]['error']).present?
         raise error['message']
       elsif
-        # 解析結果が「LIKELY」又は「VERY_LIKELY」を含む場合はfalse、それ以外はtrueを返す
-        response_body.values.include?(:LIKELY) || response_body.values.include?(:VERY_LIKELY)
-        return false
+        # ["VERY_UNLIKELY", "VERY_UNLIKELY", "UNLIKELY", "VERY_UNLIKELY", "VERY_UNLIKELY"]
+        response_body["responses"].first["safeSearchAnnotation"].values.each do |v|
+          if !v.include?("UN")
+            return false
+          end
+        end
+
+        return true
       else
         return true
       end
