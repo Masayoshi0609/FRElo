@@ -44,13 +44,13 @@ module Vision
         # ["VERY_UNLIKELY", "VERY_UNLIKELY", "UNLIKELY", "VERY_UNLIKELY", "VERY_UNLIKELY"]
         response_body["responses"].first["safeSearchAnnotation"].values.each do |v|
           if !v.include?("UN")
-            false
+            return false
           end
         end
 
-        true
+        return true
       else
-        true
+        return true
       end
 
     end
