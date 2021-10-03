@@ -40,16 +40,17 @@ module Vision
       if (error = response_body['responses'][0]['error']).present?
         raise error['message']
       elsif
+        
         # ["VERY_UNLIKELY", "VERY_UNLIKELY", "UNLIKELY", "VERY_UNLIKELY", "VERY_UNLIKELY"]
         response_body["responses"].first["safeSearchAnnotation"].values.each do |v|
           if !v.include?("UN")
-            return false
+            false
           end
         end
 
-        return true
+        true
       else
-        return true
+        true
       end
 
     end
