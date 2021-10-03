@@ -24,7 +24,7 @@ class PostsController < ApplicationController
         @post.save_tag(tag_list)
         redirect_to mypage_path
       elsif result == false
-        flash[:notice] = "画像が不適切です。投稿できません。"
+        flash[:alert] = "画像が不適切です。投稿できません。"
         render "follow_timelines/show"
       else
         render "follow_timelines/show"
