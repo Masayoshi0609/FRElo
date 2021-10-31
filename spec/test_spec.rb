@@ -1,4 +1,4 @@
-#Rspecのテスト記述
+#Rspecのテスト
 describe '四則演算' do
   context '足し算' do
     it '1 + 1は2になる' do
